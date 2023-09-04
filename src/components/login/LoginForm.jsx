@@ -3,7 +3,7 @@ import React from 'react'
 function LoginForm() {
   return (
     <>
-        <div id="loginFormContainer" className='bg-semiDarkBlue rounded-[10px] mx-6 pt-6 px-6 pb-8 text-left '>
+        <div id="loginFormContainer" className='bg-semiDarkBlue rounded-[10px] mx-6 pt-6 px-6 pb-8 text-left md:m-0 md:p-8'>
             <div id="loginHeaderContainer" className='text-white text-[32px] font-light leading-normal tracking-[-0.5px] pb-10'>
                 <h2>Login</h2>
             </div>

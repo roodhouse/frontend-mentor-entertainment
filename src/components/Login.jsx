@@ -6,7 +6,7 @@ function Login() {
   return (
     <>
         <div id="loginContainer">
-            <div id="logoLoginWrapper" className='mb-[58px]'>
+            <div id="logoLoginWrapper" className='mb-[58px] md:mb-[72px]'>
                 <Logo />
             </div>
             <div id="loginFormWrapper">

@@ -17,8 +17,8 @@ function App() {
   return (
     <div className="App">
       <div id='mainWrapper' className='bg-darkBlue h-screen'>
-        <div id='mainContainer'>
-          <div id='loginWrapper' className='pt-12'>
+        <div id='mainContainer' className='flex justify-center'>
+          <div id='loginWrapper' className='pt-12 w-[375px] md:pt-[80px] md:w-[400px]'>
             <Login />
           </div>
         </div>
