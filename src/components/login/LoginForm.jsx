@@ -14,6 +14,17 @@ function LoginForm() {
                         className='bg-transparent font-light text-[15px] leading-normal text-white placeholder:opacity-50 caret-red focus-visible:outline-none' />
                     </div>
                     <div className='w-full h-[1px] bg-grayBlue mb-6' />
+                    <div id="passwordContainer" className='pl-4 pb-[17px]'>
+                        <input type="password" id='password' name='password' placeholder='Password' 
+                        className='bg-transparent font-light text-[15px] leading-normal text-white placeholder:opacity-50 caret-red focus-visible:outline-none' />
+                    </div>
+                    <div className='w-full h-[1px] bg-grayBlue mb-10' />
+                    <div id="submitContainer" className='bg-red rounded-[6px] py-[15px] flex justify-center cursor-pointer text-center text-white text-[15px] font-light leading-normal mb-6'>
+                        <button type='submit'>Login to your account</button>
+                    </div>
+                    <div id="noAccount" className='flex justify-center text-white text-[15px] font-light leading-normal'>
+                        <p>Don't have an account? <span className='text-red cursor-pointer'>Sign Up</span></p>
+                    </div>
                 </form>
             </div>
         </div>

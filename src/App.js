@@ -9,7 +9,9 @@ import Login from './components/Login';
 
 // login page
   // set up
-  // form vaildation
+    // mobile
+    // tablet
+    // full
 
 function App() {
   return (
