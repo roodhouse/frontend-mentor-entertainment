@@ -1,4 +1,5 @@
 import './App.css';
+import Login from './components/Login';
 
 // 1. design all pages from moblie to full
 // 2. design all states, hover etc, for all views
@@ -6,12 +7,21 @@ import './App.css';
   // hook up form etc
 // 4. replace json data with data from backend
 
+// login page
+  // set up
+  // form vaildation
+
 function App() {
   return (
     <div className="App">
-       <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+      <div id='mainWrapper' className='bg-darkBlue h-screen'>
+        <div id='mainContainer'>
+          <div id='loginWrapper' className='pt-12'>
+            <Login />
+          </div>
+        </div>
+      </div>   
+    
     </div>
   );
 }
