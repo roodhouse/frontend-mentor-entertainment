@@ -7,7 +7,7 @@ import Login from './components/Login';
   // hook up form etc
 // 4. replace json data with data from backend
 
-// login page
+// signup page
   // set up
     // mobile
     // tablet
