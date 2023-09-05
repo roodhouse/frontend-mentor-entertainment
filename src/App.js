@@ -28,7 +28,7 @@ function App() {
           <div id='signUpWrapper' className='hidden pt-12 w-[375px] md:pt-[80px] md:w-[400px]'>
             <SignUp />
           </div>
-          <div id='mainWrapper' className='w-full py-[18px] px-4'>
+          <div id='mainWrapper' className='w-full md:pt-6 md:px-6'>
             <Main />
           </div>
         </div>

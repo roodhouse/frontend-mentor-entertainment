@@ -5,7 +5,7 @@ import TvPageIconSelected from '../../../../assets/icon-nav-tv-series-selected.s
 function TvIcon() {
   return (
     <>
-        <div id="TvIconContainer" className='w-4 h-4'>
+        <div id="TvIconContainer" className='w-4 h-4 md:w-5 md:h-5'>
             <img src={TvPageIcon} alt="TV Icon" />
             <img src={TvPageIconSelected} alt="TV Icon" className='hidden' />
         </div>

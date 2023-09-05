@@ -5,7 +5,7 @@ import MoviePageIconSelected from '../../../../assets/icon-nav-movies-selected.s
 function MovieIcon() {
   return (
     <>
-        <div id="movieIconContainer" className='w-4 h-4'>
+        <div id="movieIconContainer" className='w-4 h-4 md:w-5 md:h-5'>
             <img src={MoviePageIcon} alt="Home Icon" />
             <img src={MoviePageIconSelected} alt="Home Icon" className='hidden' />
         </div>
