@@ -4,8 +4,8 @@ import MainHeader from './main/MainHeader'
 function Main() {
   return (
     <>
-        <div id="mainContainer">
-            <div id="mainHeaderWrapper">
+        <div id="mainContainer" className='xl:flex xl:flex-col'>
+            <div id="mainHeaderWrapper" className='xl:w-[96px] xl:h-[960px]'>
                 <MainHeader />
             </div>
             {/* <div id="searchBarWrapper">
