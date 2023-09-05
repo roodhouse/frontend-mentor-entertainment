@@ -1,8 +1,27 @@
 import React from 'react'
+import HomeIcon from './icons/HomeIcon'
+import MovieIcon from './icons/MovieIcon'
+import TvIcon from './icons/TvIcon'
+import BookMarkIcon from './icons/BookMarkIcon'
 
 function Icons() {
   return (
-    <div>Icons</div>
+    <>
+        <div id="iconsContainer">
+            <div id="homeIconWrapper">
+                <HomeIcon />
+            </div>
+            <div id="movieIconWrapper">
+                <MovieIcon />
+            </div>
+            <div id="TvIconWrapper">
+                <TvIcon />
+            </div>
+            <div id="bookmarkIconWrapper">
+                <BookMarkIcon />
+            </div>
+        </div>
+    </>
   )
 }
 
