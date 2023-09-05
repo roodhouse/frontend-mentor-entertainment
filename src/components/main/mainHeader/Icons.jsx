@@ -7,7 +7,7 @@ import BookMarkIcon from './icons/BookMarkIcon'
 function Icons() {
   return (
     <>
-        <div id="iconsContainer">
+        <div id="iconsContainer" className='flex justify-between w-[134px]'>
             <div id="homeIconWrapper">
                 <HomeIcon />
             </div>

@@ -6,7 +6,7 @@ import Avatar from './mainHeader/Avatar'
 function MainHeader() {
   return (
     <>
-        <div id="mainHeaderContainer" className='flex justify-between'>
+        <div id="mainHeaderContainer" className='flex justify-between items-center'>
             <div id="mainHeaderLogoWrapper" className='w-[25px] h-[20px]'>
                 <Logo />
             </div>
