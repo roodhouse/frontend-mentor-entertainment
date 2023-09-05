@@ -20,7 +20,7 @@ function Trending() {
   return (
     <>
         <div id="trendingContainer">
-            <div id="trendingHeading" className='text-white text-xl leading-normal font-light tracking-[-0.312px]'>
+            <div id="trendingHeading" className='text-white text-xl leading-normal font-light tracking-[-0.312px] mb-4'>
                 <h2>Trending</h2>
             </div>
             <div id="trendingItemsContainer">
@@ -31,7 +31,7 @@ function Trending() {
                             return (
 
                                 <div key={isAtrend.title} className='trendingContainer'>
-                                    <div className='trending w-[100px] h-[100px]' style={{ backgroundImage: `url(${isAtrend.thumbnail.trending.small})`, color: 'red' }}>
+                                    <div className='trending w-[240px] h-[140px] bg-contain rounded-[8px]' style={{ backgroundImage: `url(${isAtrend.thumbnail.trending.small})`, color: 'red' }}>
                                         <p>{isAtrend.year}</p>
                                     </div>
                                 </div>
