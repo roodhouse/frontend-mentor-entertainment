@@ -20,8 +20,8 @@ import Main from './components/Main';
 function App() {
   return (
     <div className="App">
-      <div id='mainWrapper' className='bg-darkBlue h-screen'>
-        <div id='mainContainer' className='flex justify-center'>
+      <div id='mainAppWrapper' className='bg-darkBlue h-screen'>
+        <div id='mainAppContainer' className='flex justify-center'>
           <div id='loginWrapper' className='hidden pt-12 w-[375px] md:pt-[80px] md:w-[400px]'>
             <Login />
           </div>
