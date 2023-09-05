@@ -1,6 +1,7 @@
 import React from 'react'
 import MainHeader from './main/MainHeader'
 import SearchBar from './main/SearchBar'
+import Home from './main/Home'
 
 function Main() {
   return (
@@ -12,10 +13,10 @@ function Main() {
             <div id="searchBarWrapper" className='xl:pt-8'>
                 <SearchBar />
             </div>
-            {/* <div id="homeWrapper">
+            <div id="homeWrapper">
                 <Home />
             </div>
-            <div id="searchPageWrapper">
+            {/* <div id="searchPageWrapper">
                 <SearchPage />
             </div>
             <div id="moviesPageWrapper">
