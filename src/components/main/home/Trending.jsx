@@ -31,11 +31,10 @@ function Trending() {
                             return (
 
                                 <div key={isAtrend.title} className='trendingContainer'>
-                                    <div className='trending' style={{backgroundImage: isAtrend.thumbnail.trending.small}}>
+                                    <div className='trending w-[100px] h-[100px]' style={{ backgroundImage: `url(${isAtrend.thumbnail.trending.small})`, color: 'red' }}>
                                         <p>{isAtrend.year}</p>
                                     </div>
                                 </div>
-                                isAtrend.title
                             )
                         }
                     })
