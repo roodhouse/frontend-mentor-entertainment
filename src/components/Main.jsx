@@ -1,16 +1,17 @@
 import React from 'react'
 import MainHeader from './main/MainHeader'
+import SearchBar from './main/SearchBar'
 
 function Main() {
   return (
     <>
-        <div id="mainContainer" className='xl:flex xl:flex-col'>
-            <div id="mainHeaderWrapper" className='xl:w-[96px] xl:h-[960px]'>
+        <div id="mainContainer" className='xl:flex'>
+            <div id="mainHeaderWrapper" className='xl:w-[96px] xl:h-[960px] xl:mr-9'>
                 <MainHeader />
             </div>
-            {/* <div id="searchBarWrapper">
+            <div id="searchBarWrapper" className='xl:pt-8'>
                 <SearchBar />
-            </div> */}
+            </div>
             {/* <div id="homeWrapper">
                 <Home />
             </div>
