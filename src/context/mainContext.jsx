@@ -1,4 +1,5 @@
 import React, { useContext, createContext, useState } from 'react'
+import Data from '../data.json'
 
 // create the context
 const MainContext = createContext()
@@ -7,8 +8,16 @@ const MainContext = createContext()
 const MainProvider = ({ children }) => {
     const [ home, setHome ] = useState(true)
 
+    const whatTitle = () => {
+        if (home) {
+          return 'Recommended for you'
+        }
+      }
+
+    
+
     return (
-        <MainContext.Provider value={{ home, setHome }}>
+        <MainContext.Provider value={{ home, setHome, whatTitle }}>
             {children}
         </MainContext.Provider>
     )
