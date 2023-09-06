@@ -6,7 +6,7 @@ import Home from './main/Home'
 function Main() {
   return (
     <>
-        <div id="mainContainer" className='xl:flex'>
+        <div id="mainContainer" className='xl:flex xl:overflow-hidden'>
             <div id="mainHeaderWrapper" className='md:pt-6 md:px-6 xl:pt-8 xl:pl-8 xl:w-[96px] xl:h-[960px] xl:mr-9'>
                 <MainHeader />
             </div>

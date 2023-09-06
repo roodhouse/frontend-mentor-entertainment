@@ -6,7 +6,6 @@ import { MainProvider } from './context/mainContext';
 
 // 1. design all pages from moblie to full
     // home
-      // max-width is off on full size trending
     // search
     // movies
     // tv series
