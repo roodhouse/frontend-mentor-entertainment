@@ -1,6 +1,7 @@
 import React from 'react'
 import Trending from './home/Trending'
 
+// trending full view next
 // trending is not cutting off at right edge of screen
 
 function Home() {
