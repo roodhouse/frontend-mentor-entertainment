@@ -2,9 +2,11 @@ import './App.css';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Main from './components/Main';
+import { MainProvider } from './context/mainContext';
 
 // 1. design all pages from moblie to full
     // home
+      // max-width is off on full size trending
     // search
     // movies
     // tv series
@@ -15,26 +17,27 @@ import Main from './components/Main';
 // 4. replace json data with data from backend
 // 5. validate form etc
 
-
+console.log(window.innerWidth)
 
 function App() {
   return (
-    <div className="App">
-      <div id='mainAppWrapper' className='bg-darkBlue h-screen'>
-        <div id='mainAppContainer' className='flex justify-center'>
-          <div id='loginWrapper' className='hidden pt-12 w-[375px] md:pt-[80px] md:w-[400px]'>
-            <Login />
+    <MainProvider>
+      <div className="App">
+        <div id='mainAppWrapper' className='bg-darkBlue h-screen'>
+          <div id='mainAppContainer' className='flex justify-center'>
+            <div id='loginWrapper' className='hidden pt-12 w-[375px] md:pt-[80px] md:w-[400px]'>
+              <Login />
+            </div>
+            <div id='signUpWrapper' className='hidden pt-12 w-[375px] md:pt-[80px] md:w-[400px]'>
+              <SignUp />
+            </div>
+            <div id='mainWrapper' className='w-full'>
+              <Main />
+            </div>
           </div>
-          <div id='signUpWrapper' className='hidden pt-12 w-[375px] md:pt-[80px] md:w-[400px]'>
-            <SignUp />
-          </div>
-          <div id='mainWrapper' className='w-full md:pt-6 md:px-6 xl:pt-8 xl:pl-8'>
-            <Main />
-          </div>
-        </div>
-      </div>   
-    
-    </div>
+        </div>   
+      </div>
+    </MainProvider>
   );
 }
 

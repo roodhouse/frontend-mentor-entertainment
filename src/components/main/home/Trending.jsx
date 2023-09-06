@@ -26,7 +26,7 @@ function Trending() {
             <div id="trendingHeading" className='text-white text-xl leading-normal font-light tracking-[-0.312px] mb-4 md:text-[32px] md:leading-normal md:tracking-[-0.5px] md:mb-6'>
                 <h2>Trending</h2>
             </div>
-            <div id="trendingItemsContainer" className='flex'>
+            <div id="trendingItemsContainer" className='flex overflow-hidden'>
                 {
                     Data.map((isAtrend) => {
                         if ( isAtrend.isTrending ) {
