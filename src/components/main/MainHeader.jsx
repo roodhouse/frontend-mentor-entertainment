@@ -10,7 +10,7 @@ function MainHeader() {
             <div id="mainHeaderLogoWrapper" className='w-[25px] h-[20px] md:w-8 xl:h-[25px] xl:mb-[75px]'>
                 <Logo />
             </div>
-            <div id="iconsWrapper" className='xl:mb-[552px]'>
+            <div id="iconsWrapper" className='xl:mb-[518px]'>
                 <Icons />
             </div>
             <div id="avatarWrapper">
