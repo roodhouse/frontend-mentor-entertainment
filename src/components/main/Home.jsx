@@ -10,7 +10,6 @@ function Home() {
 
   const { whatTitle } = useMain()
 
-  // in this function right now...........................................
   const hoverAction = (e) => {
     console.log(e.target)
     let item = e.target
@@ -19,28 +18,14 @@ function Home() {
     } else {
       let hoverBackground = document.createElement('div')
       let playContainer = document.createElement('div')
-      let playIconContainer = document.createElement('div')
-      let playCopyContainer = document.createElement('div')
-      let play = document.createElement('p')
-
+    
       hoverBackground.setAttribute('id', 'hoverBackground')
-      hoverBackground.classList.add('w-[164px]','h-[110px]', 'rounded-[8px]', 'bg-black', 'opacity-50', 'relative', 'z-10', 'pointer-events-none', 'flex', 'justify-center', 'items-center')
+      hoverBackground.classList.add('w-[164px]','h-[110px]', 'md:w-[220px]','md:h-[140px]','rounded-[8px]', 'bg-black', 'opacity-50', 'absolute', 'z-10', 'pointer-events-none', 'flex', 'justify-center', 'items-center')
 
       playContainer.setAttribute('id', 'playContainer')
-      playContainer.classList.add('w-[117px]', 'h-[48px]', 'bg-white', 'opacity-25', 'rounded-[28.5px]', 'flex')
+      playContainer.classList.add('w-[117px]', 'h-[48px]', 'bg-[url("./assets/play.svg")]', 'bg-transparent', 'relative', 'z-20', 'rounded-[28.5px]', 'self-center', 'cursor-pointer')
 
-      playIconContainer.setAttribute('id', 'playIconContainer')
-      playIconContainer.classList.add('w-[30px]', 'h-[30px]', 'bg-[url("./assets/icon-play.svg")]', 'bg-contain', 'bg-no-repeat')
-
-      playCopyContainer.setAttribute('id', 'playCopyContainer')
-      playCopyContainer.classList.add('text-lg', 'font-medium', 'leading-normal', 'text-white')
-
-      play.innerHTML = 'Play'
-
-      playCopyContainer.appendChild(play)
-      playContainer.appendChild(playIconContainer)
-      playContainer.appendChild(playCopyContainer)
-      hoverBackground.appendChild(playContainer)
+      item.appendChild(playContainer)
       item.appendChild(hoverBackground)
     }
     
@@ -48,8 +33,9 @@ function Home() {
 
   const outHover = (e) => {
     console.log(e.target)
-    // let item = e.target
-    // item.removeChild(item.children[1])
+    let item = e.target
+    item.removeChild(item.children[1])
+    item.removeChild(item.children[1])
   }
 
 
@@ -69,8 +55,8 @@ function Home() {
                  if (!item.isTrending) {
                      return (
                          <div key={item.title} className='recommendedItemContainer mb-4'>
-                            <div onMouseEnter={hoverAction} onMouseLeave={outHover} className='recommendedItemBackground w-[164px] h-[110px] bg-contain flex justify-end rounded-[8px] mb-2'
-                                 style={ window.innerWidth < 768 ? { backgroundImage: `url(${item.thumbnail.regular.small})` } : ''}>
+                            <div onMouseEnter={hoverAction} onMouseLeave={outHover} className='recommendedItemBackground w-[164px] h-[110px] bg-contain flex flex-col justify-start rounded-[8px] mb-2 md:w-[220px] md:h-[140px]'
+                                 style={ window.innerWidth < 768 ? { backgroundImage: `url(${item.thumbnail.regular.small})` } : window.innerWidth < 1280 ? { backgroundImage: `url(${item.thumbnail.regular.medium})` } : { backgroundImage: `url(${item.thumbnail.regular.large})` }}>
                                     <BookmarkFlag />
                             </div>
                             <div className='recommendedDetailsContainer flex items-center justify-start max-w-[155px] md:pl-6 md:max-w-[175px]'>
