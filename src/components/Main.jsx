@@ -2,9 +2,13 @@ import React from 'react'
 import MainHeader from './main/MainHeader'
 import SearchBar from './main/SearchBar'
 import Home from './main/Home'
+import SearchPage from './main/SearchPage'
+import { useMain } from '../context/mainContext'
 
 function Main() {
 
+    const { whatTitle } = useMain()
+    
     const maxWidthCalc = () => {
         if (window.innerWidth >= 1280) {
             let newWidth = window.innerWidth - 132
@@ -21,21 +25,28 @@ function Main() {
                 <div id="searchBarWrapper" className='xl:pt-8'>
                     <SearchBar />
                 </div>
-                <div id="homeWrapper">
+                <div id="homeWrapper" className='hidden'>
                     <Home />
                 </div>
-                {/* <div id="searchPageWrapper">
-                    <SearchPage />
+                <div id="searchVariety">
+                    <div id="pageTitle" className='text-left text-white text-xl leading-normal tracking-[-0.312px] font-light pl-4 mb-6 md:text-[32px] md:tracking-[-.5px] md:pl-0 xl:mb-8'>
+                        <h2>{whatTitle()}</h2>
+                    </div>
+                    <div id="theSearchPages">
+                        <div id="searchPageWrapper">
+                            <SearchPage />
+                        </div>
+                        {/* <div id="moviesPageWrapper">
+                            <MoviesPage />
+                        </div> */}
+                        {/* <div id="tvPageWrapper">
+                            <TvPage />
+                        </div> */}
+                        {/* <div id="bookmarkedPageWrapper">
+                            <BookmarkedPage />
+                        </div> */}
+                    </div>
                 </div>
-                <div id="moviesPageWrapper">
-                    <MoviesPage />
-                </div>
-                <div id="tvPageWrapper">
-                    <TvPage />
-                </div>
-                <div id="bookmarkedPageWrapper">
-                    <BookmarkedPage />
-                </div> */}
             </div>
 
         </div>

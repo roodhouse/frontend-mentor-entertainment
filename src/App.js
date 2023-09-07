@@ -5,8 +5,7 @@ import Main from './components/Main';
 import { MainProvider } from './context/mainContext';
 
 // 1. design all pages from moblie to full
-    // home
-        // on tab view of rec on home screen
+    
     // search
     // movies
     // tv series
@@ -17,8 +16,6 @@ import { MainProvider } from './context/mainContext';
   // hook up form etc
 // 4. replace json data with data from backend
 // 5. validate form etc
-
-console.log(window.innerWidth)
 
 function App() {
   return (
