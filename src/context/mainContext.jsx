@@ -8,7 +8,8 @@ const MainContext = createContext()
 const MainProvider = ({ children }) => {
     const [ home, setHome ] = useState(false)
     const [ search, setSearch ] = useState(false)
-    const [ movie, setMovie ] = useState(true)
+    const [ movie, setMovie ] = useState(false)
+    const [ tv, setTv ] = useState(true)
 
     const whatTitle = () => {
         if (home) {
@@ -17,6 +18,8 @@ const MainProvider = ({ children }) => {
             return `Found x results for 'Term'`
         } else if (movie) {
             return `Movies`
+        } else if (tv) {
+            return `TV Series`
         }
       }
 
