@@ -9,7 +9,8 @@ const MainProvider = ({ children }) => {
     const [ home, setHome ] = useState(false)
     const [ search, setSearch ] = useState(false)
     const [ movie, setMovie ] = useState(false)
-    const [ tv, setTv ] = useState(true)
+    const [ tv, setTv ] = useState(false)
+    const [ bookmarked, setBookmarked ] = useState(true)
 
     const whatTitle = () => {
         if (home) {
@@ -20,6 +21,8 @@ const MainProvider = ({ children }) => {
             return `Movies`
         } else if (tv) {
             return `TV Series`
+        } else if (bookmarked) {
+            return
         }
       }
 
