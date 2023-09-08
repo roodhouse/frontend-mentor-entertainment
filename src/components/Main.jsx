@@ -28,10 +28,10 @@ function Main() {
                 <div id="searchBarWrapper" className='xl:pt-8'>
                     <SearchBar />
                 </div>
-                <div id="homeWrapper" className='hidden'>
+                <div id="homeWrapper" className=''>
                     <Home />
                 </div>
-                <div id="searchVariety">
+                <div id="searchVariety" className='hidden'>
                     <div id="pageTitle" className='text-left text-white text-xl leading-normal tracking-[-0.312px] font-light pl-4 mb-6 md:text-[32px] md:tracking-[-.5px] md:pl-0 xl:mb-8'>
                         <h2>{whatTitle()}</h2>
                     </div>
@@ -45,7 +45,7 @@ function Main() {
                         <div id="tvPageWrapper" className='hidden'>
                             <TvSeries />
                         </div>
-                        <div id="bookmarkedPageWrapper">
+                        <div id="bookmarkedPageWrapper" className='hidden'>
                             <BookmarkedPage />
                         </div>
                     </div>
