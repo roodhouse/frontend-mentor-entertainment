@@ -7,13 +7,16 @@ const MainContext = createContext()
 // define a provider component to wrap
 const MainProvider = ({ children }) => {
     const [ home, setHome ] = useState(false)
-    const [ search, setSearch ] = useState(true)
+    const [ search, setSearch ] = useState(false)
+    const [ movie, setMovie ] = useState(true)
 
     const whatTitle = () => {
         if (home) {
           return 'Recommended for you'
         } else if (search) {
             return `Found x results for 'Term'`
+        } else if (movie) {
+            return `Movies`
         }
       }
 

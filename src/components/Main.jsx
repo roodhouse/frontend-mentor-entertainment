@@ -3,6 +3,7 @@ import MainHeader from './main/MainHeader'
 import SearchBar from './main/SearchBar'
 import Home from './main/Home'
 import SearchPage from './main/SearchPage'
+import Movies from './main/Movies'
 import { useMain } from '../context/mainContext'
 
 function Main() {
@@ -33,12 +34,12 @@ function Main() {
                         <h2>{whatTitle()}</h2>
                     </div>
                     <div id="theSearchPages">
-                        <div id="searchPageWrapper">
+                        <div id="searchPageWrapper" className='hidden'>
                             <SearchPage />
                         </div>
-                        {/* <div id="moviesPageWrapper">
-                            <MoviesPage />
-                        </div> */}
+                        <div id="moviesPageWrapper">
+                            <Movies />
+                        </div>
                         {/* <div id="tvPageWrapper">
                             <TvPage />
                         </div> */}
