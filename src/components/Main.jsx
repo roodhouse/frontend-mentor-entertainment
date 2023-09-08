@@ -5,6 +5,7 @@ import Home from './main/Home'
 import SearchPage from './main/SearchPage'
 import Movies from './main/Movies'
 import TvSeries from './main/TvSeries'
+import BookmarkedPage from './main/BookmarkedPage'
 import { useMain } from '../context/mainContext'
 
 function Main() {
@@ -41,12 +42,12 @@ function Main() {
                         <div id="moviesPageWrapper" className='hidden'>
                             <Movies />
                         </div>
-                        <div id="tvPageWrapper">
+                        <div id="tvPageWrapper" className='hidden'>
                             <TvSeries />
                         </div>
-                        {/* <div id="bookmarkedPageWrapper">
+                        <div id="bookmarkedPageWrapper">
                             <BookmarkedPage />
-                        </div> */}
+                        </div>
                     </div>
                 </div>
             </div>

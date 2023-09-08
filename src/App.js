@@ -6,7 +6,6 @@ import { MainProvider } from './context/mainContext';
 
 // 1. design all pages from moblie to full
   
-// bookmarked
 // search
       // how to bring back the correct bookmark image if bookmarked is true?
 // 2. design all states, hover etc, for all views
