@@ -4,6 +4,7 @@ import SearchBar from './main/SearchBar'
 import Home from './main/Home'
 import SearchPage from './main/SearchPage'
 import Movies from './main/Movies'
+import TvSeries from './main/TvSeries'
 import { useMain } from '../context/mainContext'
 
 function Main() {
@@ -37,12 +38,12 @@ function Main() {
                         <div id="searchPageWrapper" className='hidden'>
                             <SearchPage />
                         </div>
-                        <div id="moviesPageWrapper">
+                        <div id="moviesPageWrapper" className='hidden'>
                             <Movies />
                         </div>
-                        {/* <div id="tvPageWrapper">
-                            <TvPage />
-                        </div> */}
+                        <div id="tvPageWrapper">
+                            <TvSeries />
+                        </div>
                         {/* <div id="bookmarkedPageWrapper">
                             <BookmarkedPage />
                         </div> */}
