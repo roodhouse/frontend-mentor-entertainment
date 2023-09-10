@@ -10,8 +10,8 @@ const MainProvider = ({ children }) => {
     const [ home, setHome ] = useState(false)
     const [ search, setSearch ] = useState(false)
     const [ movie, setMovie ] = useState(false)
-    const [ tv, setTv ] = useState(true)
-    const [ bookmarked, setBookmarked ] = useState(false)
+    const [ tv, setTv ] = useState(false)
+    const [ bookmarked, setBookmarked ] = useState(true)
     const [ searchTerm, setSearchTerm ] = useState('')
 
     const whatTitle = () => {

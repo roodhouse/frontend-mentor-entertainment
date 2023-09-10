@@ -1,11 +1,16 @@
 import React from 'react'
 import Card from '../shared/Card'
 import Data from '../../data.json'
+import { useMain } from '../../context/mainContext'
 
 function BookmarkedPage() {
-  const movieData = Data.filter((item) => item.isBookmarked === true && item.category === 'Movie')
-  const tvData = Data.filter((item) => item.isBookmarked === true && item.category === 'TV Series')
+
+  const { searchTerm } = useMain()
+  const movieData = searchTerm ? Data.filter((item) => item.category === 'Movie' && item.title.includes(searchTerm)) : Data.filter((item) => item.category === 'Movie')
+  const tvData = searchTerm ? Data.filter((item) => item.category === 'TV Series' && item.title.includes(searchTerm)) : Data.filter((item) => item.category === 'TV Series')
   
+  // want to change the h2 to not display if search brings back 0 resutls
+
   return (
     <>
         <div id="bookmarkMovieTitle" className='text-left text-white text-xl leading-normal tracking-[-0.312px] font-light pl-4 mb-6 md:text-[32px] md:tracking-[-.5px] md:pl-0 xl:mb-8'>

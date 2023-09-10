@@ -42,10 +42,10 @@ function Main() {
                         <div id="moviesPageWrapper" className='hidden'>
                             <Movies />
                         </div>
-                        <div id="tvPageWrapper" className=''>
+                        <div id="tvPageWrapper" className='hidden'>
                             <TvSeries />
                         </div>
-                        <div id="bookmarkedPageWrapper" className='hidden'>
+                        <div id="bookmarkedPageWrapper" className=''>
                             <BookmarkedPage />
                         </div>
                     </div>
