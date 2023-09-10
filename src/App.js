@@ -10,6 +10,7 @@ import { MainProvider } from './context/mainContext';
       // how to bring back the correct bookmark image if bookmarked is true?
 // 2. design all states, hover etc, for all views
 // 3. set up back end
+  // python
   // hook up form etc
 // 4. replace json data with data from backend
 // 5. validate form etc

@@ -12,6 +12,7 @@ const MainProvider = ({ children }) => {
     const [ movie, setMovie ] = useState(false)
     const [ tv, setTv ] = useState(false)
     const [ bookmarked, setBookmarked ] = useState(false)
+    const [ searchTerm, setSearchTerm ] = useState('')
 
     const whatTitle = () => {
         if (home) {
@@ -57,32 +58,12 @@ const MainProvider = ({ children }) => {
 
       const handleSubmit = (e) => {
         e.preventDefault()
-        let searchTerm = document.getElementById('search').value
-
-        console.log(searchTerm)
-        // stuck heree!!!!! 
-        if (home) {
-            const allData = Data.filter((item) => item.title.includes(searchTerm))
-            console.log(allData)
-            const recContainer = document.getElementById('recommendedWrapper')
-            const resultsDiv = (
-                <div id="searchPageContainer" className='flex flex-wrap px-4 justify-between md:pl-0 md:pr-6 xl:pr-9'>
-                {
-                    allData.map((item) => (
-                        <Card key={item.title} item={item} />
-                    ))
-                }
-                 </div>
-            )
-
-            recContainer.appendChild(resultsDiv)
-            console.log(resultsDiv())
-        }
-
+        const newSearchTerm = document.getElementById('search').value
+        setSearchTerm(newSearchTerm)
       }
      
     return (
-        <MainContext.Provider value={{ home, setHome, whatTitle, hoverAction, outHover, search, handleSubmit }}>
+        <MainContext.Provider value={{ home, setHome, whatTitle, hoverAction, outHover, search, handleSubmit, searchTerm }}>
             {children}
         </MainContext.Provider>
     )

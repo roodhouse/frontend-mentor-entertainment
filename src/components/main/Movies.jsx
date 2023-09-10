@@ -3,6 +3,8 @@ import Card from '../shared/Card'
 import Data from '../../data.json'
 
 function Movies() {
+
+  // if searchTerm is true then change movieData to fit 
   const movieData = Data.filter((item) => item.category === 'Movie')
   
   return (
