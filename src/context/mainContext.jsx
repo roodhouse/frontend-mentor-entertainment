@@ -9,8 +9,8 @@ const MainContext = createContext()
 const MainProvider = ({ children }) => {
     const [ home, setHome ] = useState(false)
     const [ search, setSearch ] = useState(false)
-    const [ movie, setMovie ] = useState(true)
-    const [ tv, setTv ] = useState(false)
+    const [ movie, setMovie ] = useState(false)
+    const [ tv, setTv ] = useState(true)
     const [ bookmarked, setBookmarked ] = useState(false)
     const [ searchTerm, setSearchTerm ] = useState('')
 

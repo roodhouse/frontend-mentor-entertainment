@@ -39,10 +39,10 @@ function Main() {
                         <div id="searchPageWrapper" className='hidden'>
                             <SearchPage />
                         </div>
-                        <div id="moviesPageWrapper" className=''>
+                        <div id="moviesPageWrapper" className='hidden'>
                             <Movies />
                         </div>
-                        <div id="tvPageWrapper" className='hidden'>
+                        <div id="tvPageWrapper" className=''>
                             <TvSeries />
                         </div>
                         <div id="bookmarkedPageWrapper" className='hidden'>
