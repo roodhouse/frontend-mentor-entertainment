@@ -7,9 +7,9 @@ const MainContext = createContext()
 
 // define a provider component to wrap
 const MainProvider = ({ children }) => {
-    const [ home, setHome ] = useState(true)
+    const [ home, setHome ] = useState(false)
     const [ search, setSearch ] = useState(false)
-    const [ movie, setMovie ] = useState(false)
+    const [ movie, setMovie ] = useState(true)
     const [ tv, setTv ] = useState(false)
     const [ bookmarked, setBookmarked ] = useState(false)
     const [ searchTerm, setSearchTerm ] = useState('')
