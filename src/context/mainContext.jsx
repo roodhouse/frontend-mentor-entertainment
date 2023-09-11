@@ -56,12 +56,6 @@ const MainProvider = ({ children }) => {
         item.removeChild(item.children[1])
       }
 
-    const handleSubmit = (e) => {
-    e.preventDefault()
-    const newSearchTerm = document.getElementById('search').value
-    setSearchTerm(newSearchTerm)
-    }
-    
     const handleChange = (e) => {
     console.log(e.target.value)
     let term = e.target.value
@@ -69,7 +63,7 @@ const MainProvider = ({ children }) => {
     }
      
     return (
-        <MainContext.Provider value={{ home, setHome, whatTitle, hoverAction, outHover, search, handleSubmit, searchTerm, handleChange }}>
+        <MainContext.Provider value={{ home, setHome, whatTitle, hoverAction, outHover, search, searchTerm, handleChange }}>
             {children}
         </MainContext.Provider>
     )

@@ -5,12 +5,12 @@ import { useMain } from '../../context/mainContext'
 
 function SearchBar() {
 
-  const { handleSubmit, handleChange } = useMain()
+  const { handleChange } = useMain()
 
   return (
     <>
         <div id="searchBarContainer" className='pl-4 mb-6 md:pl-0 md:mb-[35px]'>
-            <form noValidate className='flex items-center' onSubmit={handleSubmit} onChange={handleChange}>
+            <form noValidate className='flex items-center' onChange={handleChange}>
                 <div id="searchIconContainer" className='w-6 h-6 mr-4 md:w-8 md:h-8 md:mr-6'>
                     <button type='submit'>
                         <img src={SearchIcon} alt="Search Icon" />

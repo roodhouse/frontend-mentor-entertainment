@@ -6,7 +6,6 @@ import { useMain } from '../../context/mainContext'
 function TvSeries() {
   const { searchTerm } = useMain()
 
-  // const movieData = Data.filter((item) => item.category === 'TV Series')
   const movieData = searchTerm ? Data.filter((item) => item.category === 'TV Series' && item.title.includes(searchTerm)) : Data.filter((item) => item.category === 'TV Series')
 
   return (
