@@ -1,16 +1,18 @@
 import React, { useContext, createContext, useState } from 'react'
 import Data from '../data.json'
+import Card from '../components/shared/Card'
 
 // create the context
 const MainContext = createContext()
 
 // define a provider component to wrap
 const MainProvider = ({ children }) => {
-    const [ home, setHome ] = useState(false)
+    const [ home, setHome ] = useState(true)
     const [ search, setSearch ] = useState(false)
     const [ movie, setMovie ] = useState(false)
     const [ tv, setTv ] = useState(false)
-    const [ bookmarked, setBookmarked ] = useState(true)
+    const [ bookmarked, setBookmarked ] = useState(false)
+    const [ searchTerm, setSearchTerm ] = useState('')
 
     const whatTitle = () => {
         if (home) {
@@ -54,8 +56,14 @@ const MainProvider = ({ children }) => {
         item.removeChild(item.children[1])
       }
 
+    const handleChange = (e) => {
+    console.log(e.target.value)
+    let term = e.target.value
+    setSearchTerm(term)
+    }
+     
     return (
-        <MainContext.Provider value={{ home, setHome, whatTitle, hoverAction, outHover, search }}>
+        <MainContext.Provider value={{ home, setHome, whatTitle, hoverAction, outHover, search, searchTerm, handleChange }}>
             {children}
         </MainContext.Provider>
     )

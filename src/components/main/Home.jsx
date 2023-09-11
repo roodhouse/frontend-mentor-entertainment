@@ -5,24 +5,35 @@ import MovieIcon from '../../assets/icon-category-movie.svg'
 import TvIcon from '../../assets/icon-category-tv.svg'
 import { useMain } from '../../context/mainContext'
 import Data from '../../data.json'
-// import Card from '../shared/Card'
+import Card from '../shared/Card'
 
 function Home() {
 
-  const { whatTitle, hoverAction, outHover } = useMain()
+  const { whatTitle, hoverAction, outHover, searchTerm } = useMain()
+
+  const allData = Data.filter((item) => item.title.includes(searchTerm))
+  console.log(allData)
+  console.log(searchTerm)
 
   return (
     <>
         <div id="homeContainer">
-            <div id="trendingWrapper" className='mb-6 text-left pl-4 md:pl-0 md:mb-10'>
+            <div id="trendingWrapper" className='mb-6 text-left pl-4 md:pl-0 md:mb-10'
+            style={ searchTerm !== '' ? {display: 'none'} : {display: 'block'}}>
                 <Trending />
             </div>
             <div id="pageTitle" className='text-left text-white text-xl leading-normal tracking-[-0.312px] font-light pl-4 mb-6 md:text-[32px] md:tracking-[-.5px] md:pl-0 xl:mb-8'>
-              <h2>{whatTitle()}</h2>
+              <h2>{ searchTerm === '' ? 'Recommended for you' : `Found results ${allData.length} for '${searchTerm}'`}</h2>
             </div>
             
             <div id="recommendedWrapper" className='flex flex-wrap px-4 justify-between md:pl-0 md:pr-6 xl:pr-9'>
            {
+            
+            searchTerm !== '' ? (
+              allData.map((item) => (
+                <Card key={item.title} item={item} />
+              ))
+            ) :
              Data.map((item) => {
                  if (!item.isTrending) {
                      return (
