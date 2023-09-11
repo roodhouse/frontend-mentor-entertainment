@@ -13,6 +13,8 @@ const MainProvider = ({ children }) => {
     const [ tv, setTv ] = useState(false)
     const [ bookmarked, setBookmarked ] = useState(false)
     const [ searchTerm, setSearchTerm ] = useState('')
+    const [ signupPage, setSignupPage ] = useState(false)
+    const [ loginPage, setLoginPage ] = useState(false)
 
     const whatTitle = () => {
         if (home) {
@@ -84,9 +86,29 @@ const MainProvider = ({ children }) => {
             setBookmarked(true)
         }
     }
+
+    const loginPageClick = (e) => {
+        console.log(e)
+        setLoginPage(true)
+        setSignupPage(false)
+    }
+
+    const signUpPageClick = (e) => {
+        setSignupPage(true)
+        setLoginPage(false)
+    }
+
+    const handleAvatarClick = (e) => {
+        setHome(false)
+        setMovie(false)
+        setTv(false)
+        setBookmarked(false)
+        setSignupPage(false)
+        setLoginPage(true)
+    }
      
     return (
-        <MainContext.Provider value={{ home, movie, tv, bookmarked, setHome, whatTitle, hoverAction, outHover, search, searchTerm, handleChange, handlePageChange }}>
+        <MainContext.Provider value={{ home, movie, tv, bookmarked, setHome, whatTitle, hoverAction, outHover, search, searchTerm, handleChange, handlePageChange, signupPage, loginPage, loginPageClick, signUpPageClick, handleAvatarClick }}>
             {children}
         </MainContext.Provider>
     )
