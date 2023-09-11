@@ -4,18 +4,13 @@ import SignUp from './components/SignUp';
 import Main from './components/Main';
 import { MainProvider, useMain } from './context/mainContext';
 
-  
-// 1. design all states, hover etc, for all views, onclick of icons changing states
-  // hover states 
-      // buttons, login, signup
-      // bookmark icons
-// 2. how to bring back the correct bookmark image if bookmarked is true?
 // 3. validate form etc
 // 4. fix height issue
 // 5. fix spacing issue
 // 6. set up back end
   // python
   // hook up form etc
+  // hook up bookmarks
 // 7. replace json data with data from backend
 
 function App() {

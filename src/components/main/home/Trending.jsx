@@ -35,7 +35,7 @@ function Trending() {
                                 <div key={isAtrend.title} className='trendingItemsInnerContainer mr-4 cursor-pointer md:mr-10' onClick={handleSlide}>
                                     <div className='trending w-[240px] h-[140px] bg-contain rounded-[8px] md:w-[470px] md:h-[230px] bg-no-repeat' style={ window.innerWidth < 768 ? { backgroundImage: `url(${isAtrend.thumbnail.trending.small})` } : { backgroundImage: `url(${isAtrend.thumbnail.trending.large})` }}>
                                         <div id="bookmarkTrendingFlagWrapper" className='flex justify-end mb-[46px] md:mb-[106px]'>
-                                            <BookmarkFlag />
+                                            <BookmarkFlag background={isAtrend.isBookmarked ? '../../assets/icon-bookmark-full.svg' : '../../assets/icon-bookmark-empty.svg'} />
                                         </div>
                                         <div className='trendingDetailsContainer pl-4 flex items-center justify-between max-w-[155px] md:pl-6 md:max-w-[175px]'>
                                             <div className='trendingDetailsYear text-white opacity-75 text-xs leading-normal  md:text-[15px]'>

@@ -6,8 +6,8 @@ import { useMain } from '../../context/mainContext'
 function BookmarkedPage() {
 
   const { searchTerm } = useMain()
-  const movieData = searchTerm ? Data.filter((item) => item.category === 'Movie' && item.title.includes(searchTerm)) : Data.filter((item) => item.category === 'Movie')
-  const tvData = searchTerm ? Data.filter((item) => item.category === 'TV Series' && item.title.includes(searchTerm)) : Data.filter((item) => item.category === 'TV Series')
+  const movieData = searchTerm ? Data.filter((item) => item.category === 'Movie' && item.isBookmarked && item.title.includes(searchTerm)) : Data.filter((item) => item.category === 'Movie' && item.isBookmarked)
+  const tvData = searchTerm ? Data.filter((item) => item.category === 'TV Series' && item.isBookmarked && item.title.includes(searchTerm)) : Data.filter((item) => item.category === 'TV Series' && item.isBookmarked)
   
   return (
     <>
@@ -19,7 +19,7 @@ function BookmarkedPage() {
         <div id="bookmarkPageMovieContainer" className='flex flex-wrap px-4 justify-between md:pl-0 md:pr-6 xl:pr-9'>
             {movieData.map((item) => (
                 
-                <Card key={item.title} item={item} />
+                <Card key={item.title} item={item} background={item.isBookmarked ? '../../assets/icon-bookmark-full.svg' : '../../assets/icon-bookmark-empty.svg'} />
             ))}
         </div>
 
@@ -31,7 +31,7 @@ function BookmarkedPage() {
         <div id="bookmarkPageTvContainer" className='flex flex-wrap px-4 justify-between md:pl-0 md:pr-6 xl:pr-9'>
             {tvData.map((item) => (
                 
-                <Card key={item.title} item={item} />
+                <Card key={item.title} item={item} background={item.isBookmarked ? '../../assets/icon-bookmark-full.svg' : '../../assets/icon-bookmark-empty.svg'} />
             ))}
         </div>
 </>
