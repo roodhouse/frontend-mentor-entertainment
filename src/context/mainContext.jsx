@@ -7,11 +7,11 @@ const MainContext = createContext()
 
 // define a provider component to wrap
 const MainProvider = ({ children }) => {
-    const [ home, setHome ] = useState(false)
+    const [ home, setHome ] = useState(true)
     const [ search, setSearch ] = useState(false)
     const [ movie, setMovie ] = useState(false)
     const [ tv, setTv ] = useState(false)
-    const [ bookmarked, setBookmarked ] = useState(true)
+    const [ bookmarked, setBookmarked ] = useState(false)
     const [ searchTerm, setSearchTerm ] = useState('')
 
     const whatTitle = () => {
@@ -56,14 +56,20 @@ const MainProvider = ({ children }) => {
         item.removeChild(item.children[1])
       }
 
-      const handleSubmit = (e) => {
-        e.preventDefault()
-        const newSearchTerm = document.getElementById('search').value
-        setSearchTerm(newSearchTerm)
-      }
+    const handleSubmit = (e) => {
+    e.preventDefault()
+    const newSearchTerm = document.getElementById('search').value
+    setSearchTerm(newSearchTerm)
+    }
+    
+    const handleChange = (e) => {
+    console.log(e.target.value)
+    let term = e.target.value
+    setSearchTerm(term)
+    }
      
     return (
-        <MainContext.Provider value={{ home, setHome, whatTitle, hoverAction, outHover, search, handleSubmit, searchTerm }}>
+        <MainContext.Provider value={{ home, setHome, whatTitle, hoverAction, outHover, search, handleSubmit, searchTerm, handleChange }}>
             {children}
         </MainContext.Provider>
     )

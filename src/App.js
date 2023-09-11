@@ -3,17 +3,16 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Main from './components/Main';
 import { MainProvider } from './context/mainContext';
-
-// 1. design all pages from moblie to full
   
-// search
-      // how to bring back the correct bookmark image if bookmarked is true?
-// 2. design all states, hover etc, for all views
-// 3. set up back end
+// 1. design all states, hover etc, for all views, onclick of icons changing states
+// 2. how to bring back the correct bookmark image if bookmarked is true?
+// 3. validate form etc
+// 4. fix height issue
+// 5. fix spacing issue
+// 6. set up back end
   // python
   // hook up form etc
-// 4. replace json data with data from backend
-// 5. validate form etc
+// 7. replace json data with data from backend
 
 function App() {
   return (
