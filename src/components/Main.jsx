@@ -10,7 +10,7 @@ import { useMain } from '../context/mainContext'
 
 function Main() {
 
-    const { whatTitle } = useMain()
+    const { whatTitle, home, movie, tv, bookmarked } = useMain()
     
     const maxWidthCalc = () => {
         if (window.innerWidth >= 1280) {
@@ -28,24 +28,21 @@ function Main() {
                 <div id="searchBarWrapper" className='xl:pt-8'>
                     <SearchBar />
                 </div>
-                <div id="homeWrapper" className=''>
+                <div id="homeWrapper" className='' style={ home ? {display: 'block'} : {display: 'none'}}>
                     <Home />
                 </div>
-                <div id="searchVariety" className='hidden'>
+                <div id="searchVariety" style={ !home ? {display: 'block'} : {display: 'none'}}>
                     <div id="pageTitle" className='text-left text-white text-xl leading-normal tracking-[-0.312px] font-light pl-4 mb-6 md:text-[32px] md:tracking-[-.5px] md:pl-0 xl:mb-8'>
                         <h2>{whatTitle()}</h2>
                     </div>
                     <div id="theSearchPages">
-                        <div id="searchPageWrapper" className='hidden'>
-                            <SearchPage />
-                        </div>
-                        <div id="moviesPageWrapper" className='hidden'>
+                        <div id="moviesPageWrapper" style={ movie ? {display: 'block'} : {display: 'none'}}>
                             <Movies />
                         </div>
-                        <div id="tvPageWrapper" className='hidden'>
+                        <div id="tvPageWrapper" style={ tv ? {display: 'block'} : {display: 'none'}}>
                             <TvSeries />
                         </div>
-                        <div id="bookmarkedPageWrapper" className='hidden'>
+                        <div id="bookmarkedPageWrapper" style={ bookmarked ? {display: 'block'} : {display: 'none'}}>
                             <BookmarkedPage />
                         </div>
                     </div>

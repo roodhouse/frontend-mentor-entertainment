@@ -13,6 +13,8 @@ const MainProvider = ({ children }) => {
     const [ tv, setTv ] = useState(false)
     const [ bookmarked, setBookmarked ] = useState(false)
     const [ searchTerm, setSearchTerm ] = useState('')
+    const [ signupPage, setSignupPage ] = useState(false)
+    const [ loginPage, setLoginPage ] = useState(false)
 
     const whatTitle = () => {
         if (home) {
@@ -30,7 +32,6 @@ const MainProvider = ({ children }) => {
 
     
     const hoverAction = (e) => {
-        console.log(e.target)
         let item = e.target
         if ( item.id === 'bookmarkFlagContainer' ) {
             console.log('bookmark')
@@ -50,20 +51,64 @@ const MainProvider = ({ children }) => {
     }
 
     const outHover = (e) => {
-        console.log(e.target)
         let item = e.target
         item.removeChild(item.children[1])
         item.removeChild(item.children[1])
       }
 
     const handleChange = (e) => {
-    console.log(e.target.value)
     let term = e.target.value
     setSearchTerm(term)
     }
+
+    const handlePageChange = (e) => {
+        console.log(e)
+        setSearchTerm('')
+        if ( e === 'home' ) {
+            setHome(true)
+            setMovie(false)
+            setTv(false)
+            setBookmarked(false)
+        } else if ( e === 'movie' ) {
+            setHome(false)
+            setMovie(true)
+            setTv(false)
+            setBookmarked(false)
+        } else if ( e === 'tv' ) {
+            setHome(false)
+            setMovie(false)
+            setTv(true)
+            setBookmarked(false)
+        } else if ( e === 'bookmarked' ) {
+            setHome(false)
+            setMovie(false)
+            setTv(false)
+            setBookmarked(true)
+        }
+    }
+
+    const loginPageClick = (e) => {
+        console.log(e)
+        setLoginPage(true)
+        setSignupPage(false)
+    }
+
+    const signUpPageClick = (e) => {
+        setSignupPage(true)
+        setLoginPage(false)
+    }
+
+    const handleAvatarClick = (e) => {
+        setHome(false)
+        setMovie(false)
+        setTv(false)
+        setBookmarked(false)
+        setSignupPage(false)
+        setLoginPage(true)
+    }
      
     return (
-        <MainContext.Provider value={{ home, setHome, whatTitle, hoverAction, outHover, search, searchTerm, handleChange }}>
+        <MainContext.Provider value={{ home, movie, tv, bookmarked, setHome, whatTitle, hoverAction, outHover, search, searchTerm, handleChange, handlePageChange, signupPage, loginPage, loginPageClick, signUpPageClick, handleAvatarClick }}>
             {children}
         </MainContext.Provider>
     )
