@@ -12,8 +12,6 @@ function Home() {
   const { whatTitle, hoverAction, outHover, searchTerm } = useMain()
 
   const allData = Data.filter((item) => item.title.includes(searchTerm))
-  console.log(allData)
-  console.log(searchTerm)
 
   return (
     <>

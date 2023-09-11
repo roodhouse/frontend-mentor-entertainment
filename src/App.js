@@ -5,6 +5,7 @@ import Main from './components/Main';
 import { MainProvider } from './context/mainContext';
   
 // 1. design all states, hover etc, for all views, onclick of icons changing states
+  // hover states 
 // 2. how to bring back the correct bookmark image if bookmarked is true?
 // 3. validate form etc
 // 4. fix height issue

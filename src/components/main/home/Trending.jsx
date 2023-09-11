@@ -30,7 +30,6 @@ function Trending() {
                 {
                     Data.map((isAtrend) => {
                         if ( isAtrend.isTrending ) {
-                            console.log(isAtrend.title)
                             return (
 
                                 <div key={isAtrend.title} className='trendingItemsInnerContainer mr-4 cursor-pointer md:mr-10' onClick={handleSlide}>
