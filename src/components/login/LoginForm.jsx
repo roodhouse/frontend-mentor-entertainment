@@ -1,9 +1,15 @@
 import React from 'react'
 import { useMain } from '../../context/mainContext'
+import { useForm } from 'react-hook-form'
 
 function LoginForm() {
 
-    const { signUpPageClick } = useMain()
+  const { signUpPageClick } = useMain()
+
+  const { register, handleSubmit, formState: {errors} } = useForm({ defaultValues: {
+    email:'',
+    password: ''
+  }}, {validateOnChange: true})
   return (
     <>
         <div id="loginFormContainer" className='bg-semiDarkBlue rounded-[10px] mx-6 pt-6 px-6 pb-8 text-left md:m-0 md:p-8'>
@@ -13,8 +19,18 @@ function LoginForm() {
             <div id="loginFormContainer">
                 <form noValidate>
                     <div id="emailContainer" className='pl-4 pb-[17px] cursor-pointer'>
-                        <input type="text" id='email' name='email' placeholder='Email address' 
-                        className='bg-transparent font-light text-[15px] leading-normal text-white placeholder:opacity-50 caret-red focus-visible:outline-none' />
+                        <input 
+                            type="text" 
+                            id='email' name='email' 
+                            placeholder='Email address' 
+                            className='bg-transparent font-light text-[15px] leading-normal text-white placeholder:opacity-50 caret-red focus-visible:outline-none'
+                            {...register("email", {
+                                validate: {
+                                    matchPattern: (v) =>
+                                    /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'Oops! Please check your email',
+                                }
+                            })}
+                            />
                     </div>
                     <div className='w-full h-[1px] bg-grayBlue mb-6' />
                     <div id="passwordContainer" className='pl-4 pb-[17px] cursor-pointer'>
