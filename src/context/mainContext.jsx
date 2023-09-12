@@ -93,6 +93,11 @@ const MainProvider = ({ children }) => {
         setSignupPage(false)
     }
 
+    const successLogin = (e) => {
+        setLoginPage(false)
+        setHome(true)
+    }
+
     const signUpPageClick = (e) => {
         setSignupPage(true)
         setLoginPage(false)
@@ -108,7 +113,7 @@ const MainProvider = ({ children }) => {
     }
      
     return (
-        <MainContext.Provider value={{ home, movie, tv, bookmarked, setHome, whatTitle, hoverAction, outHover, search, searchTerm, handleChange, handlePageChange, signupPage, loginPage, loginPageClick, signUpPageClick, handleAvatarClick }}>
+        <MainContext.Provider value={{ home, movie, tv, bookmarked, setHome, whatTitle, hoverAction, outHover, search, searchTerm, handleChange, handlePageChange, signupPage, loginPage, loginPageClick, signUpPageClick, handleAvatarClick, successLogin }}>
             {children}
         </MainContext.Provider>
     )
