@@ -95,6 +95,7 @@ const MainProvider = ({ children }) => {
 
     const successLogin = (e) => {
         setLoginPage(false)
+        setSignupPage(false)
         setHome(true)
     }
 
