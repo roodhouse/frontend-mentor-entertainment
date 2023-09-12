@@ -1,9 +1,29 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useMain } from '../../context/mainContext'
+import { useForm } from 'react-hook-form'
 
 function SignUpForm() {
 
-    const { loginPageClick } = useMain()
+    const { loginPageClick, successLogin } = useMain()
+
+    const { register, handleSubmit, watch, formState: {errors} } = useForm({ defaultValues: {
+        email:'',
+        password: ''
+      }}, {validateOnChange: true})
+
+    const password = useRef({})
+    password.current = watch("password", '')
+    
+      const onSubmit = (data) => {
+        console.log(data)
+        successLogin()
+    
+        
+      }
+    
+      const onError = (data) => {
+        console.log(data)
+      }
     
   return (
     <>
@@ -12,20 +32,54 @@ function SignUpForm() {
                 <h2>Sign Up</h2>
             </div>
             <div id="signUpFormContainer">
-                <form noValidate>
-                    <div id="signUpEmailContainer" className='pl-4 pb-[17px] cursor-pointer'>
-                        <input type="text" id='email' name='email' placeholder='Email address' 
-                        className='bg-transparent font-light text-[15px] leading-normal text-white placeholder:opacity-50 caret-red focus-visible:outline-none' />
+                <form noValidate onSubmit={handleSubmit(onSubmit, onError)}>
+                    <div id="signUpEmailContainer" className='pl-4 pb-[17px] cursor-pointer flex'>
+                        <input 
+                            type="text" 
+                            id='email' 
+                            name='email' 
+                            placeholder='Email address' 
+                            className='bg-transparent font-light text-[15px] leading-normal text-white placeholder:opacity-50 caret-red focus-visible:outline-none' 
+                            {...register("email", {
+                                required: `Can't be empty`
+                            })}
+                            />
+                        { errors.email && (
+                            <p className='text-red w-[88px] text-[13px] font-light leading-normal'>{errors.email.message}</p>
+                        )}
                     </div>
                     <div className='w-full h-[1px] bg-grayBlue mb-6' />
-                    <div id="signUpPasswordContainer" className='pl-4 pb-[17px] cursor-pointer'>
-                        <input type="password" id='password' name='password' placeholder='Password' 
-                        className='bg-transparent font-light text-[15px] leading-normal text-white placeholder:opacity-50 caret-red focus-visible:outline-none' />
+                    <div id="signUpPasswordContainer" className='pl-4 pb-[17px] cursor-pointer flex'>
+                        <input 
+                            type="password" 
+                            id='password' 
+                            name='password' 
+                            placeholder='Password' 
+                            className='bg-transparent font-light text-[15px] leading-normal text-white placeholder:opacity-50 caret-red focus-visible:outline-none'
+                            {...register("password", {
+                                required: `Can't be empty`
+                            })}
+                             />
+                        { errors.password && (
+                            <p className='text-red w-[88px] text-[13px] font-light leading-normal'>{errors.password.message}</p>
+                        )}
                     </div>
                     <div className='w-full h-[1px] bg-grayBlue mb-6' />
-                    <div id="signUpPasswordRepeatContainer" className='pl-4 pb-[17px] cursor-pointer'>
-                        <input type="password" id='repeatPassword' name='repeatPassword' placeholder='Repeat Password' 
-                        className='bg-transparent font-light text-[15px] leading-normal text-white placeholder:opacity-50 caret-red focus-visible:outline-none' />
+                    <div id="signUpPasswordRepeatContainer" className='pl-4 pb-[17px] cursor-pointer flex'>
+                        <input 
+                            type="password" 
+                            id='repeatPassword' 
+                            name='repeatPassword' 
+                            placeholder='Repeat Password' 
+                            className='bg-transparent font-light text-[15px] leading-normal text-white placeholder:opacity-50 caret-red focus-visible:outline-none' 
+                            {...register("repeatPassword",{
+                                validate: value =>
+                                    value === password.current || "The passwords don't match"
+                            })}
+                            />
+                        { errors.repeatPassword && (
+                            <p className='text-red w-[88px] text-[13px] font-light leading-normal'>{errors.repeatPassword.message}</p>
+                        )}
                     </div>
                     <div className='w-full h-[1px] bg-grayBlue mb-10' />
                     <div id="signUpSubmitContainer" className='bg-red rounded-[6px] py-[15px] flex justify-center cursor-pointer text-center text-white text-[15px] font-light leading-normal mb-6 hover:bg-white hover:text-black'>
