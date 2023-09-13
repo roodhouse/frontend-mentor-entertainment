@@ -25,15 +25,13 @@ function App() {
     const appHeight = app.offsetHeight
     const mainWrapper = document.getElementById('mainWrapper')
     console.log(appHeight, window.innerHeight)
-    console.log(searchTerm)
 
     if ( appHeight < window.innerHeight ) {
-      console.log('hi')
       mainWrapper.classList.add('h-screen')
     } 
     
-    if ( appHeight > window.innerHeight ) {
-      mainWrapper.classList.remove('h-screen')
+    if ( appHeight >= window.innerHeight && searchTerm === '' ) {
+        mainWrapper.classList.remove('h-screen')
     }
 
   },[searchTerm])

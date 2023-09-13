@@ -58,7 +58,12 @@ const MainProvider = ({ children }) => {
 
     const handleChange = (e) => {
     let term = e.target.value
-    setSearchTerm(term)
+    if ( term === '' ) {
+        setSearchTerm('')
+     } else {
+        setSearchTerm(term)
+     }
+     console.log(searchTerm)
     }
 
     const handlePageChange = (e) => {
