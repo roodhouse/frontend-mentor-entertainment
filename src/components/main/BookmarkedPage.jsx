@@ -16,7 +16,7 @@ function BookmarkedPage() {
             <h2>Bookmarked Movies</h2>
         </div>
 
-        <div id="bookmarkPageMovieContainer" className='flex flex-wrap px-4 justify-between md:pl-0 md:pr-6 xl:pr-9'>
+        <div id="bookmarkPageMovieContainer" className='grid grid-cols-12 gap-[15px] px-4 md:pl-0 md:pr-6 xl:pr-9'>
             {movieData.map((item) => (
                 
                 <Card key={item.title} item={item} background={item.isBookmarked ? '../../assets/icon-bookmark-full.svg' : '../../assets/icon-bookmark-empty.svg'} />
@@ -28,7 +28,7 @@ function BookmarkedPage() {
             <h2>Bookmarked TV Series</h2>
         </div>
 
-        <div id="bookmarkPageTvContainer" className='flex flex-wrap px-4 justify-between md:pl-0 md:pr-6 xl:pr-9'>
+        <div id="bookmarkPageTvContainer" className='grid grid-cols-12 gap-[15px] px-4 md:pl-0 md:pr-6 xl:pr-9'>
             {tvData.map((item) => (
                 
                 <Card key={item.title} item={item} background={item.isBookmarked ? '../../assets/icon-bookmark-full.svg' : '../../assets/icon-bookmark-empty.svg'} />
