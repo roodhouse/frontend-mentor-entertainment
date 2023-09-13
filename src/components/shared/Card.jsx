@@ -11,7 +11,7 @@ function Card({ item, background }) {
 
   return (
     <>
-      <div key={item.title} className='recommendedItemContainer mb-4 md:mb-6'>
+      <div key={item.title} className='recommendedItemContainer mb-4 md:mb-6 col-span-6 min-[530px]:col-span-4 lg:col-span-3 min-w-[164px]'>
           <div onMouseEnter={hoverAction} onMouseLeave={outHover} className='recommendedItemBackground w-[164px] h-[110px] flex flex-col justify-start rounded-[8px] mb-2 md:w-[220px] md:h-[140px] xl:w-[280px] xl:h-[174px] 2xl:w-[375px] 2xl:h-[233px] bg-cover bg-no-repeat'
                 style={ window.innerWidth < 768 ? { backgroundImage: `url(${item.thumbnail.regular.small})` } : window.innerWidth < 1280 ? { backgroundImage: `url(${item.thumbnail.regular.medium})` } : { backgroundImage: `url(${item.thumbnail.regular.large})` }}>
                   <BookmarkFlag item={item} background={background} />

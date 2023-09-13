@@ -24,7 +24,7 @@ function Main() {
             <div id="mainHeaderWrapper" className='md:pt-6 md:px-6 xl:pt-8 xl:pl-8 xl:w-[96px] xl:h-[960px] xl:mr-9'>
                 <MainHeader />
             </div>
-            <div id="searchAndContentWrapper" className='md:pt-6 md:pl-6 xl:pt-8 xl:pl-0' style={{maxWidth: maxWidthCalc()}}>
+            <div id="searchAndContentWrapper" className='w-full md:pt-6 md:pl-6 xl:pt-8 xl:pl-0' style={{maxWidth: maxWidthCalc()}}>
                 <div id="searchBarWrapper" className='xl:pt-8'>
                     <SearchBar />
                 </div>

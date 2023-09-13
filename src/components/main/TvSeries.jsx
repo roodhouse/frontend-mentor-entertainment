@@ -10,7 +10,7 @@ function TvSeries() {
 
   return (
     <>
-    <div id="tvPageContainer" className='flex flex-wrap px-4 justify-between md:pl-0 md:pr-6 xl:pr-9'>
+    <div id="tvPageContainer" className='grid grid-cols-12 gap-[15px] px-4 md:pl-0 md:pr-6 xl:pr-9'>
         {movieData.map((item) => (
             <Card key={item.title} item={item} background={item.isBookmarked ? '../../assets/icon-bookmark-full.svg' : '../../assets/icon-bookmark-empty.svg'} />
         ))}

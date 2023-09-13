@@ -3,10 +3,8 @@ import './App.css';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Main from './components/Main';
-import { MainProvider, useMain } from './context/mainContext';
+import { useMain } from './context/mainContext';
 
-// 4. fix height issue
-// 5. fix spacing issue
 // 6. set up back end
   // python
   // hook up form etc
