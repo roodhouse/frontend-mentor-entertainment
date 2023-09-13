@@ -5,17 +5,9 @@ import SignUp from './components/SignUp';
 import Main from './components/Main';
 import { useMain } from './context/mainContext';
 
-// 6. set up back end
-  // python
-  // hook up form etc
-  // hook up bookmarks
-// 7. replace json data with data from backend
-
 function App() {
 
   const { signupPage, loginPage, home, movie, tv, bookmarked, searchTerm } = useMain()
-
-  // console.log(window.innerHeight)
 
   useEffect(() => {
 
