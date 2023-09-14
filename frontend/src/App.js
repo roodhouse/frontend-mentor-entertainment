@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './App.css';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
@@ -13,9 +13,25 @@ import { useMain } from './context/mainContext';
 
 function App() {
 
+  const [ shows, setShows ] = useState([])
+
   const { signupPage, loginPage, home, movie, tv, bookmarked, searchTerm } = useMain()
 
-  // console.log(window.innerHeight)
+  useEffect(() => {
+    // fetch data from flask api endpoint
+    fetch('/api/shows')
+      .then((response) => response.json())
+      .then((data) => {
+        // set the retrieved shows data in the state
+        setShows(data.shows)
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error)
+      })
+  },[])
+
+  console.log(shows)
+  console.log('go')
 
   useEffect(() => {
 
