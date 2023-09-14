@@ -1,5 +1,6 @@
 from flask import Flask
 from app.routes import home
+from app.db import init_db
 
 def create_app(test_config=None):
     #set up app config
@@ -14,5 +15,7 @@ def create_app(test_config=None):
         return 'hello world'
     # register routes
     app.register_blueprint(home)
+
+    init_db()
 
     return app
