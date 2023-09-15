@@ -5,9 +5,9 @@ import { useMain } from '../../context/mainContext'
 
 function BookmarkedPage() {
 
-  const { searchTerm } = useMain()
-  const movieData = searchTerm ? Data.filter((item) => item.category === 'Movie' && item.isBookmarked && item.title.includes(searchTerm)) : Data.filter((item) => item.category === 'Movie' && item.isBookmarked)
-  const tvData = searchTerm ? Data.filter((item) => item.category === 'TV Series' && item.isBookmarked && item.title.includes(searchTerm)) : Data.filter((item) => item.category === 'TV Series' && item.isBookmarked)
+  const { searchTerm, shows } = useMain()
+  const movieData = searchTerm ? shows.filter((item) => item.category === 'Movie' && item.isBookmarked && item.title.includes(searchTerm)) : shows.filter((item) => item.category === 'Movie' && item.isBookmarked)
+  const tvData = searchTerm ? shows.filter((item) => item.category === 'TV Series' && item.isBookmarked && item.title.includes(searchTerm)) : shows.filter((item) => item.category === 'TV Series' && item.isBookmarked)
   
   return (
     <>

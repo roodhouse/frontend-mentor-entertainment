@@ -14,6 +14,8 @@ import { useMain } from './context/mainContext';
   // hook up form etc
   // hook up bookmarks
 
+// 7. height issue on bookmark page only, when empty.... wait,, only empty because bookmarks are not hooked up...  
+
 
 function App() {
 

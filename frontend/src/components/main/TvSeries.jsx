@@ -1,12 +1,11 @@
 import React from 'react'
 import Card from '../shared/Card'
-import Data from '../../data.json'
 import { useMain } from '../../context/mainContext'
 
 function TvSeries() {
-  const { searchTerm } = useMain()
+  const { searchTerm, shows } = useMain()
 
-  const movieData = searchTerm ? Data.filter((item) => item.category === 'TV Series' && item.title.includes(searchTerm)) : Data.filter((item) => item.category === 'TV Series')
+  const movieData = searchTerm ? shows.filter((item) => item.category === 'TV Series' && item.title.includes(searchTerm)) : shows.filter((item) => item.category === 'TV Series')
 
   return (
     <>
