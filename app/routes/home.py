@@ -1,7 +1,8 @@
 import json
 from flask import Blueprint, send_from_directory, current_app, jsonify
-from app.models import Show, User, Bookmark, Trending
+from app.models import Show, User, Bookmark, Trend
 from app.db import get_db
+from sqlalchemy.orm import joinedload
 
 bp = Blueprint('home', __name__, url_prefix='/')
 
@@ -32,7 +33,7 @@ def serve_manifest():
     return jsonify(mainifest_data)
 
 @bp.route('/api/shows')
-def get_shows():
+def get_shows_and_trending():
     # query the database to get shows data
     db = get_db()
     shows = db.query(Show).order_by(Show.id).all()
@@ -48,7 +49,8 @@ def get_shows():
             'regular_small': show.regular_small,
             'regular_med': show.regular_med,
             'regular_lg': show.regular_lg,
-            'trending': show.trending
+            'trending': show.trending,
+            'trending_data': show.trending_data
         }
         for show in shows
     ]

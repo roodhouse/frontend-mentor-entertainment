@@ -8,4 +8,4 @@ class Trend(Base):
     show_id = Column(Integer, ForeignKey('shows.id'))
     trending_small = Column(String(250), nullable=False)
     trending_large = Column(String(250), nullable=False)
-    show = relationship('Show', cascade='all,delete')
+    show = relationship('Show', back_populates='trend')
