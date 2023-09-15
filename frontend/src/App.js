@@ -7,9 +7,9 @@ import { useMain } from './context/mainContext';
 
 // 6. set up back end
   // python
-    // replace json data with data from backend 
+  // hook up forms etc
+    // once user can log in then: replace json data with data from backend 
       // hook up book mark data
-  // hook up form etc
   // hook up bookmarks
 
 // 7. height issue on bookmark page only, when empty.... wait,, only empty because bookmarks are not hooked up...  

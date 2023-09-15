@@ -1,5 +1,5 @@
 import json
-from flask import Blueprint, send_from_directory, current_app, jsonify
+from flask import Blueprint, send_from_directory, current_app, jsonify, request
 from app.models import Show, User, Bookmark, Trend
 from app.db import get_db
 from sqlalchemy.orm import joinedload
@@ -56,3 +56,11 @@ def get_shows_and_trending():
     ]
 
     return jsonify({'shows': shows_data})
+
+# user routes
+@bp.route('/users', methods=['POST'])
+def signup():
+    data = request.get_json()
+    print(data)
+
+    return ''
