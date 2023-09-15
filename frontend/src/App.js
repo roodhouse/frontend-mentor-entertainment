@@ -8,8 +8,6 @@ import { useMain } from './context/mainContext';
 // 6. set up back end
   // python
     // replace json data with data from backend 
-      // continue to map out general data
-        // hook up data for movie, tv and bookmark pages
       // hook up book mark data
   // hook up form etc
   // hook up bookmarks
