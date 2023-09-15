@@ -3,7 +3,6 @@ import BookmarkFlag from '../shared/BookmarkFlag'
 import MovieIcon from '../../assets/icon-category-movie.svg'
 import TvIcon from '../../assets/icon-category-tv.svg'
 import { useMain } from '../../context/mainContext'
-import Data from '../../data.json'
 
 function Card({ item, background }) {
 
@@ -13,7 +12,7 @@ function Card({ item, background }) {
     <>
       <div key={item.title} className='recommendedItemContainer mb-4 md:mb-6 col-span-6 min-[530px]:col-span-4 lg:col-span-3 min-w-[164px]'>
           <div onMouseEnter={hoverAction} onMouseLeave={outHover} className='recommendedItemBackground w-[164px] h-[110px] flex flex-col justify-start rounded-[8px] mb-2 md:w-[220px] md:h-[140px] xl:w-[280px] xl:h-[174px] 2xl:w-[375px] 2xl:h-[233px] bg-cover bg-no-repeat'
-                style={ window.innerWidth < 768 ? { backgroundImage: `url(${item.thumbnail.regular.small})` } : window.innerWidth < 1280 ? { backgroundImage: `url(${item.thumbnail.regular.medium})` } : { backgroundImage: `url(${item.thumbnail.regular.large})` }}>
+                style={ window.innerWidth < 768 ? { backgroundImage: `url(${item.regular_small})` } : window.innerWidth < 1280 ? { backgroundImage: `url(${item.regular_med})` } : { backgroundImage: `url(${item.regular_lg})` }}>
                   <BookmarkFlag item={item} background={background} />
           </div>
           <div className='recommendedDetailsContainer flex items-center justify-start max-w-[155px] md:max-w-[175px]'>

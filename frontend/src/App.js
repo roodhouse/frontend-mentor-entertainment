@@ -25,7 +25,7 @@ function App() {
     const mainWrapper = document.getElementById('mainWrapper')
     console.log(appHeight, window.innerHeight)
 
-    if ( appHeight < window.innerHeight ) {
+    if ( appHeight < window.innerHeight && searchTerm !== '' ) {
       mainWrapper.classList.add('h-screen')
     } 
     
