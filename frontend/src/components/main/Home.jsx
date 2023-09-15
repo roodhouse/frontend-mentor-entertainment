@@ -9,9 +9,12 @@ import Card from '../shared/Card'
 
 function Home() {
 
-  const { whatTitle, hoverAction, outHover, searchTerm } = useMain()
+  const { whatTitle, hoverAction, outHover, searchTerm, shows } = useMain()
 
   const allData = Data.filter((item) => item.title.includes(searchTerm))
+  const newAllData = shows.filter((item) => item.title.includes(searchTerm))
+  // need to find where I need to fix data with different terms...
+  
 
   return (
     <>

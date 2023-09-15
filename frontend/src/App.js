@@ -7,31 +7,16 @@ import { useMain } from './context/mainContext';
 
 // 6. set up back end
   // python
+    // replace json data with data from backend 
+      // continue to map out general data
+      // hook up book mark data
   // hook up form etc
   // hook up bookmarks
-// 7. replace json data with data from backend
+
 
 function App() {
 
-  const [ shows, setShows ] = useState([])
-
   const { signupPage, loginPage, home, movie, tv, bookmarked, searchTerm } = useMain()
-
-  useEffect(() => {
-    // fetch data from flask api endpoint
-    fetch('/api/shows')
-      .then((response) => response.json())
-      .then((data) => {
-        // set the retrieved shows data in the state
-        setShows(data.shows)
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error)
-      })
-  },[])
-
-  console.log(shows)
-  console.log('go')
 
   useEffect(() => {
 

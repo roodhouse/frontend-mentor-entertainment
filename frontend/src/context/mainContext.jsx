@@ -1,4 +1,4 @@
-import React, { useContext, createContext, useState } from 'react'
+import React, { useContext, createContext, useState, useEffect } from 'react'
 import Data from '../data.json'
 import Card from '../components/shared/Card'
 
@@ -15,6 +15,20 @@ const MainProvider = ({ children }) => {
     const [ searchTerm, setSearchTerm ] = useState('')
     const [ signupPage, setSignupPage ] = useState(false)
     const [ loginPage, setLoginPage ] = useState(false)
+    const [ shows, setShows ] = useState([])
+    
+        useEffect(() => {
+              // fetch data from flask api endpoint
+              fetch('/api/shows')
+                .then((response) => response.json())
+                .then((data) => {
+                  // set the retrieved shows data in the state
+                  setShows(data.shows)
+                })
+                .catch((error) => {
+                  console.error('Error fetching data:', error)
+                })
+            },[])
 
     const whatTitle = () => {
         if (home) {
@@ -119,7 +133,7 @@ const MainProvider = ({ children }) => {
     }
      
     return (
-        <MainContext.Provider value={{ home, movie, tv, bookmarked, setHome, whatTitle, hoverAction, outHover, search, searchTerm, handleChange, handlePageChange, signupPage, loginPage, loginPageClick, signUpPageClick, handleAvatarClick, successLogin }}>
+        <MainContext.Provider value={{ home, movie, tv, bookmarked, setHome, whatTitle, hoverAction, outHover, search, searchTerm, handleChange, handlePageChange, signupPage, loginPage, loginPageClick, signUpPageClick, handleAvatarClick, successLogin, shows }}>
             {children}
         </MainContext.Provider>
     )
