@@ -11,11 +11,26 @@ function LoginForm() {
     password: ''
   }}, {validateOnChange: true})
 
-  const onSubmit = (data) => {
+  const  onSubmit = async (data) => {
     console.log(data)
-    successLogin()
-
-    
+    const email = data.email
+    const password = data.password
+    if (email && password) {
+        console.log('truth')
+        const response = await fetch('/users/login', {
+            method: 'post',
+            body: JSON.stringify({
+                email,
+                password
+            }),
+            headers: {'Content-Type': 'application/json'}
+        })
+        if(response.ok) {
+            successLogin()
+        } else {
+            alert(response.statusText + ' hi')
+        }
+    }
   }
 
   const onError = (data) => {
