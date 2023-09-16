@@ -6,9 +6,7 @@ import Main from './components/Main';
 import { useMain } from './context/mainContext';
 
 // 6. set up back end
-  // python
-  // hook up forms etc
-    // once user can log in then: replace json data with data from backend 
+    // once user can log in then: replace json data with data from backend  - done
       // hook up book mark data
   // hook up bookmarks
 
