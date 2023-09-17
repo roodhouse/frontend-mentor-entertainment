@@ -8,7 +8,7 @@ import { useMain } from './context/mainContext';
 // 6. set up back end
       // hook up book mark data
   // hook up bookmarks
-
+    // work on seeding the db with bookmarks for hte users...
 // 7. height issue on bookmark page only, when empty.... wait,, only empty because bookmarks are not hooked up...  
 
 
