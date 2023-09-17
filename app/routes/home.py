@@ -111,3 +111,21 @@ def login():
     session['loggedIn'] = True
 
     return jsonify(id = user.id)
+
+@bp.route('/api/bookmarked')
+def get_bookmarked():
+    db = get_db()
+    bookmarked = db.query(Bookmark).order_by(Bookmark.id).all()
+
+    bookmark_data = [
+        {
+            'id': bookmark.id,
+            'user_id': bookmark.user_id,
+            'show_id': bookmark.show_id,
+            'bookmarked_at': bookmark.bookmarked_at
+        }
+        for bookmark in bookmarked
+    ]
+
+    return jsonify({'bookmarked': bookmark_data})
+
