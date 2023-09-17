@@ -16,6 +16,7 @@ const MainProvider = ({ children }) => {
     const [ signupPage, setSignupPage ] = useState(false)
     const [ loginPage, setLoginPage ] = useState(false)
     const [ shows, setShows ] = useState([])
+    const [ userBookmarks, setUserBookmarks] = useState([])
     
         useEffect(() => {
               // fetch data from flask api endpoint
@@ -29,6 +30,21 @@ const MainProvider = ({ children }) => {
                   console.error('Error fetching data:', error)
                 })
             },[])
+
+            useEffect(() => {
+                // fetch data from flask api endpoint
+                fetch('/api/bookmarked')
+                  .then((response) => response.json())
+                  .then((data) => {
+                    // set the retrieved shows data in the state
+                    setUserBookmarks(data.show_id)
+                  })
+                  .catch((error) => {
+                    console.error('Error fetching data:', error)
+                  })
+              },[])
+
+              console.log(userBookmarks)
 
     const whatTitle = () => {
         if (home) {
