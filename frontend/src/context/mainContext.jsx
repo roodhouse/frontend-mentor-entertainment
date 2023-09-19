@@ -17,6 +17,8 @@ const MainProvider = ({ children }) => {
     const [ loginPage, setLoginPage ] = useState(false)
     const [ shows, setShows ] = useState([])
     const [ userBookmarks, setUserBookmarks] = useState([])
+    const [userAuthenticated, setUserAuthenticated] = useState(false);
+    const [ userData, setUserData ] = useState(null)
     
         useEffect(() => {
               // fetch data from flask api endpoint
@@ -45,6 +47,23 @@ const MainProvider = ({ children }) => {
                     console.error('Error fetching data:', error)
                   })
               },[])
+
+              useEffect(() => {
+                fetch('/api/user')
+                    .then((response) => response.json())
+                    .then((data) => {
+                        console.log('from fetch user', data)
+                        if (data.user_id) {
+                            setUserAuthenticated(true);
+                            setUserData(data);
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('Error fetching user data:', error);
+                    });
+            }, []);
+
+
 
     const whatTitle = () => {
         if (home) {
@@ -149,7 +168,7 @@ const MainProvider = ({ children }) => {
     }
      
     return (
-        <MainContext.Provider value={{ home, movie, tv, bookmarked, setHome, whatTitle, hoverAction, outHover, search, searchTerm, handleChange, handlePageChange, signupPage, loginPage, loginPageClick, signUpPageClick, handleAvatarClick, successLogin, shows, userBookmarks }}>
+        <MainContext.Provider value={{ home, movie, tv, bookmarked, setHome, whatTitle, hoverAction, outHover, search, searchTerm, handleChange, handlePageChange, signupPage, loginPage, loginPageClick, signUpPageClick, handleAvatarClick, successLogin, shows, userBookmarks, userData }}>
             {children}
         </MainContext.Provider>
     )

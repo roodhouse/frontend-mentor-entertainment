@@ -4,6 +4,9 @@ from app.models import Show, User, UserShowBookmark, Trend
 from app.db import get_db
 from sqlalchemy.orm import joinedload
 import sys
+from datetime import datetime
+
+current_time = datetime.now()
 
 bp = Blueprint('home', __name__, url_prefix='/')
 
@@ -63,7 +66,7 @@ def get_bookmarked():
 
     user_id = session.get('user_id')
 
-    if 'user_id' is None:
+    if user_id is None:
         return jsonify({'message': 'Not authenticated'}), 401
     
     db = get_db()
@@ -98,7 +101,24 @@ def get_bookmarked():
 
     return jsonify({'bookmarked': bookmarked_data})
 
+@bp.route('/api/bookmarked', methods=['POST'])
+def new_bookmark():
+    data = request.get_json()
+    db = get_db()
 
+    try:
+        newBookmark = UserShowBookmark(
+            user_id = data['userId'],
+            show_id = data['showId'],
+            bookmarked_at = current_time
+        )
+
+        db.add(newBookmark)
+        db.commit()
+    except:
+        print(sys.exc_info()[0])
+        db.rollback()
+        return jsonify(message = 'Bookmarked failed'), 500
 
 # user routes
 @bp.route('/users', methods=['POST'])
@@ -153,3 +173,24 @@ def login():
     session['loggedIn'] = True
 
     return jsonify(id = user.id)
+
+# get user info
+@bp.route('/api/user', methods=['GET'])
+def get_user_info():
+    db = get_db()
+    # check if user is authenticated
+    if 'user_id' in session and session['loggedIn']:
+        # retreive user info based on user_id
+        user_id = session['user_id']
+        user = db.query(User).filter_by(id=user_id).first()
+
+        if user:
+            # serialize user info and send back as json
+            user_info = {
+                'user_id': user.id,
+                'email': user.email
+            }
+            return jsonify(user_info)
+        
+    # return an error if user is not found
+    return jsonify(message='Not Authenticated'), 401
