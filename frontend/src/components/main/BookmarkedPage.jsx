@@ -5,10 +5,16 @@ import { useMain } from '../../context/mainContext'
 
 function BookmarkedPage() {
 
-  const { searchTerm, shows } = useMain()
+  const { searchTerm, shows, userBookmarks } = useMain()
   const movieData = searchTerm ? shows.filter((item) => item.category === 'Movie' && item.isBookmarked && item.title.includes(searchTerm)) : shows.filter((item) => item.category === 'Movie' && item.isBookmarked)
   const tvData = searchTerm ? shows.filter((item) => item.category === 'TV Series' && item.isBookmarked && item.title.includes(searchTerm)) : shows.filter((item) => item.category === 'TV Series' && item.isBookmarked)
   
+  // here
+  const theUserBookmarks = userBookmarks
+    console.log(`here are ${userBookmarks}`)
+    console.log('User Bookmarks:', JSON.stringify(userBookmarks, null, 2));
+    console.log(userBookmarks)
+
   return (
     <>
         <div id="bookmarkMovieTitle" className='text-left text-white text-xl leading-normal tracking-[-0.312px] font-light pl-4 mb-6 md:text-[32px] md:tracking-[-.5px] md:pl-0 xl:mb-8'

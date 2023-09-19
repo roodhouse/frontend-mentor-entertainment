@@ -1,6 +1,6 @@
 import json
 from flask import Blueprint, send_from_directory, current_app, jsonify, request, session
-from app.models import Show, User, Bookmark, Trend
+from app.models import Show, User, UserShowBookmark, Trend
 from app.db import get_db
 from sqlalchemy.orm import joinedload
 import sys
@@ -58,6 +58,48 @@ def get_shows_and_trending():
 
     return jsonify({'shows': shows_data})
 
+@bp.route('/api/bookmarked')
+def get_bookmarked():
+
+    user_id = session.get('user_id')
+
+    if 'user_id' is None:
+        return jsonify({'message': 'Not authenticated'}), 401
+    
+    db = get_db()
+
+    bookmarked = db.query(UserShowBookmark).filter_by(user_id = user_id).all()
+    
+    bookmarked_data = []
+
+    for bookmark in bookmarked:
+        show = db.query(Show).filter_by(id=bookmark.show_id).first()
+        if show:
+            bookmark_info = {
+                'id': bookmark.id,
+                'user_id': bookmark.user_id,
+                'show_id': bookmark.show_id,
+                'bookmarked_at': bookmark.bookmarked_at,
+                'show_info': {
+                    'id': show.id,
+                    'title': show.title,
+                    'category': show.category,
+                    'rating': show.rating,
+                    'year': show.year,
+                    'regular_small': show.regular_small,
+                    'regular_med': show.regular_med,
+                    'regular_lg': show.regular_lg,
+                    'trending': show.trending,
+                    'trending_data': show.trending_data
+                }
+            }
+            bookmarked_data.append(bookmark_info)
+        
+
+    return jsonify({'bookmarked': bookmarked_data})
+
+
+
 # user routes
 @bp.route('/users', methods=['POST'])
 def signup():
@@ -111,21 +153,3 @@ def login():
     session['loggedIn'] = True
 
     return jsonify(id = user.id)
-
-@bp.route('/api/bookmarked')
-def get_bookmarked():
-    db = get_db()
-    bookmarked = db.query(Bookmark).order_by(Bookmark.id).all()
-
-    bookmark_data = [
-        {
-            'id': bookmark.id,
-            'user_id': bookmark.user_id,
-            'show_id': bookmark.show_id,
-            'bookmarked_at': bookmark.bookmarked_at
-        }
-        for bookmark in bookmarked
-    ]
-
-    return jsonify({'bookmarked': bookmark_data})
-

@@ -36,15 +36,15 @@ const MainProvider = ({ children }) => {
                 fetch('/api/bookmarked')
                   .then((response) => response.json())
                   .then((data) => {
+                    console.log(`in bookmark fetch`,data)
+                    console.log(data.bookmarked)
                     // set the retrieved shows data in the state
-                    setUserBookmarks(data.show_id)
+                    setUserBookmarks(data.bookmarked)
                   })
                   .catch((error) => {
                     console.error('Error fetching data:', error)
                   })
               },[])
-
-              console.log(userBookmarks)
 
     const whatTitle = () => {
         if (home) {
@@ -149,7 +149,7 @@ const MainProvider = ({ children }) => {
     }
      
     return (
-        <MainContext.Provider value={{ home, movie, tv, bookmarked, setHome, whatTitle, hoverAction, outHover, search, searchTerm, handleChange, handlePageChange, signupPage, loginPage, loginPageClick, signUpPageClick, handleAvatarClick, successLogin, shows }}>
+        <MainContext.Provider value={{ home, movie, tv, bookmarked, setHome, whatTitle, hoverAction, outHover, search, searchTerm, handleChange, handlePageChange, signupPage, loginPage, loginPageClick, signUpPageClick, handleAvatarClick, successLogin, shows, userBookmarks }}>
             {children}
         </MainContext.Provider>
     )

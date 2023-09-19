@@ -1,4 +1,4 @@
-from app.models import User, Show, Trend, Bookmark
+from app.models import User, Show, Trend, UserShowBookmark
 from app.db import Session, Base, engine
 
 # drop & rebuild tables
@@ -62,6 +62,22 @@ trending_shows = [
 ]
 
 db.add_all(trending_shows)
+db.commit()
+
+# insert bookmarks
+# retreive user and show instances
+user1 = db.query(User).filter_by(email='john@rughdesign.com').first()
+user2 = db.query(User).filter_by(email='laura@rughdesign.com').first()
+show1 = db.query(Show).filter_by(title='Beyond Earth').first()
+show2 = db.query(Show).filter_by(title='Bottom Gear').first()
+
+# create bookmarks and associate them with users and shows
+bookmarks = [
+    UserShowBookmark(user_id=user1.id, show_id=show1.id),
+    UserShowBookmark(user_id=user2.id, show_id=show2.id),
+]
+
+db.add_all(bookmarks)
 db.commit()
 
 db.close()
