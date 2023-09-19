@@ -15,6 +15,7 @@ function BookmarkFlag({ item, background }) {
   const theBackground = isHovered ? '../../assets/icon-bookmark-hover.svg' : background
   
   const handleClick = () => {
+    // write to database or remove from database...
     console.log('hi')
   }
 

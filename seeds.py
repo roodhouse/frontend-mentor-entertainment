@@ -70,11 +70,14 @@ user1 = db.query(User).filter_by(email='john@rughdesign.com').first()
 user2 = db.query(User).filter_by(email='laura@rughdesign.com').first()
 show1 = db.query(Show).filter_by(title='Beyond Earth').first()
 show2 = db.query(Show).filter_by(title='Bottom Gear').first()
+show3 = db.query(Show).filter_by(title='During the Hunt').first()
+
 
 # create bookmarks and associate them with users and shows
 bookmarks = [
     UserShowBookmark(user_id=user1.id, show_id=show1.id),
     UserShowBookmark(user_id=user2.id, show_id=show2.id),
+    UserShowBookmark(user_id=user1.id, show_id=show3.id)
 ]
 
 db.add_all(bookmarks)
