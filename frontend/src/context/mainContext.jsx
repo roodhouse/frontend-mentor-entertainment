@@ -59,7 +59,7 @@ const MainProvider = ({ children }) => {
                     .catch((error) => {
                         console.error('Error fetching user data:', error);
                     });
-            }, [newBookmark]);
+            }, []);
 
 
 
@@ -139,9 +139,22 @@ const MainProvider = ({ children }) => {
         }
     }
 
+    const logoIconClick = () => {
+        setLoginPage(false)
+        setHome(true)
+        setMovie(false)
+        setTv(false)
+        setBookmarked(false)
+        setSignupPage(false)
+    }
+
     const loginPageClick = (e) => {
         console.log(e)
         setLoginPage(true)
+        setHome(false)
+        setMovie(false)
+        setTv(false)
+        setBookmarked(false)
         setSignupPage(false)
     }
 
@@ -149,6 +162,7 @@ const MainProvider = ({ children }) => {
         setLoginPage(false)
         setSignupPage(false)
         setHome(true)
+        setUserAuthenticated(true)
     }
 
     const signUpPageClick = (e) => {
@@ -166,7 +180,7 @@ const MainProvider = ({ children }) => {
     }
      
     return (
-        <MainContext.Provider value={{ home, movie, tv, bookmarked, setHome, whatTitle, hoverAction, outHover, search, searchTerm, handleChange, handlePageChange, signupPage, loginPage, loginPageClick, signUpPageClick, handleAvatarClick, successLogin, shows, userBookmarks, userData, setNewBookmark, newBookmark }}>
+        <MainContext.Provider value={{ home, movie, tv, bookmarked, setHome, whatTitle, hoverAction, outHover, search, searchTerm, handleChange, handlePageChange, signupPage, loginPage, loginPageClick, signUpPageClick, handleAvatarClick, successLogin, shows, userBookmarks, userData, setNewBookmark, newBookmark, userAuthenticated, logoIconClick }}>
             {children}
         </MainContext.Provider>
     )

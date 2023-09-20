@@ -6,7 +6,7 @@ import BookMarkIcon from './icons/BookMarkIcon'
 import { useMain } from '../../../context/mainContext'
 
 function Icons() {
-    const { handlePageChange } = useMain()
+    const { handlePageChange, userAuthenticated } = useMain()
 
     const handleIconClick = (event, page) => {
         event.stopPropagation()
@@ -24,7 +24,7 @@ function Icons() {
             <div id="TvIconWrapper" className='cursor-pointer' onClick={(e) => handleIconClick(e, 'tv')}>
                 <TvIcon />
             </div>
-            <div id="bookmarkIconWrapper" className='cursor-pointer' onClick={(e) => handleIconClick(e, 'bookmarked')}>
+            <div id="bookmarkIconWrapper" className={`cursor-pointer ${!userAuthenticated ? 'pointer-events-none opacity-50' : ''}`} onClick={(e) => handleIconClick(e, 'bookmarked')}>
                 <BookMarkIcon />
             </div>
         </div>
