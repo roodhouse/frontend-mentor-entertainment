@@ -65,41 +65,41 @@ def get_shows_and_trending():
 def get_bookmarked():
 
     user_id = session.get('user_id')
-
-    if user_id is None:
-        return jsonify({'message': 'Not authenticated'}), 401
-    
     db = get_db()
 
-    bookmarked = db.query(UserShowBookmark).filter_by(user_id = user_id).all()
+    if user_id is not None:
+        
+        bookmarked = db.query(UserShowBookmark).filter_by(user_id = user_id).all()
     
-    bookmarked_data = []
+        bookmarked_data = []
 
-    for bookmark in bookmarked:
-        show = db.query(Show).filter_by(id=bookmark.show_id).first()
-        if show:
-            bookmark_info = {
-                'id': bookmark.id,
-                'user_id': bookmark.user_id,
-                'show_id': bookmark.show_id,
-                'bookmarked_at': bookmark.bookmarked_at,
-                'show_info': {
-                    'id': show.id,
-                    'title': show.title,
-                    'category': show.category,
-                    'rating': show.rating,
-                    'year': show.year,
-                    'regular_small': show.regular_small,
-                    'regular_med': show.regular_med,
-                    'regular_lg': show.regular_lg,
-                    'trending': show.trending,
-                    'trending_data': show.trending_data
+        for bookmark in bookmarked:
+            show = db.query(Show).filter_by(id=bookmark.show_id).first()
+            if show:
+                bookmark_info = {
+                    'id': bookmark.id,
+                    'user_id': bookmark.user_id,
+                    'show_id': bookmark.show_id,
+                    'bookmarked_at': bookmark.bookmarked_at,
+                    'show_info': {
+                        'id': show.id,
+                        'title': show.title,
+                        'category': show.category,
+                        'rating': show.rating,
+                        'year': show.year,
+                        'regular_small': show.regular_small,
+                        'regular_med': show.regular_med,
+                        'regular_lg': show.regular_lg,
+                        'trending': show.trending,
+                        'trending_data': show.trending_data
+                    }
                 }
-            }
-            bookmarked_data.append(bookmark_info)
+                bookmarked_data.append(bookmark_info)
         
 
-    return jsonify({'bookmarked': bookmarked_data})
+        return jsonify({'bookmarked': bookmarked_data})
+    
+    return jsonify({'bookmarked': []})
 
 @bp.route('/api/bookmarked', methods=['POST'])
 def new_bookmark():
@@ -209,4 +209,4 @@ def get_user_info():
             return jsonify(user_info)
         
     # return an error if user is not found
-    return jsonify(message='Not Authenticated'), 401
+    return jsonify(message='Not Authenticated')
