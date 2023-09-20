@@ -14,9 +14,29 @@ function SignUpForm() {
     const password = useRef({})
     password.current = watch("password", '')
     
-      const onSubmit = (data) => {
+      const onSubmit = async (data) => {
         console.log(data)
-        successLogin()
+        
+        const email = data.email
+        console.log(email)
+        const password = data.password
+
+        if (email && password) {
+            const response = await fetch('/users', {
+                method: 'post',
+                body: JSON.stringify({
+                    email,
+                    password
+                }),
+                headers: {'Content-Type': 'application/json'}
+            })
+
+            if (response.ok) {
+                successLogin()
+            } else {
+                alert(response.statusText)
+            }
+        }
     
         
       }

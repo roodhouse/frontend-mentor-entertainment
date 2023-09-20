@@ -6,32 +6,19 @@ import Main from './components/Main';
 import { useMain } from './context/mainContext';
 
 // 6. set up back end
-  // python
-  // hook up form etc
+      // hook up book mark data
   // hook up bookmarks
-// 7. replace json data with data from backend
+    // remove bookmarks
+    // update bookmark page to refresh when a new bookmark is added or removed
+      // bookmarks now update on bookmarks page upon click
+      // bookmarks do not update on other pages until refresh
+        
+// 7. height issue on bookmark page only, when empty.... wait,, only empty because bookmarks are not hooked up...  
+
 
 function App() {
 
-  const [ shows, setShows ] = useState([])
-
   const { signupPage, loginPage, home, movie, tv, bookmarked, searchTerm } = useMain()
-
-  useEffect(() => {
-    // fetch data from flask api endpoint
-    fetch('/api/shows')
-      .then((response) => response.json())
-      .then((data) => {
-        // set the retrieved shows data in the state
-        setShows(data.shows)
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error)
-      })
-  },[])
-
-  console.log(shows)
-  console.log('go')
 
   useEffect(() => {
 
@@ -40,7 +27,7 @@ function App() {
     const mainWrapper = document.getElementById('mainWrapper')
     console.log(appHeight, window.innerHeight)
 
-    if ( appHeight < window.innerHeight ) {
+    if ( appHeight < window.innerHeight && searchTerm !== '' ) {
       mainWrapper.classList.add('h-screen')
     } 
     

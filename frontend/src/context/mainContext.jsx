@@ -1,4 +1,4 @@
-import React, { useContext, createContext, useState } from 'react'
+import React, { useContext, createContext, useState, useEffect } from 'react'
 import Data from '../data.json'
 import Card from '../components/shared/Card'
 
@@ -15,6 +15,56 @@ const MainProvider = ({ children }) => {
     const [ searchTerm, setSearchTerm ] = useState('')
     const [ signupPage, setSignupPage ] = useState(false)
     const [ loginPage, setLoginPage ] = useState(false)
+    const [ shows, setShows ] = useState([])
+    const [ userBookmarks, setUserBookmarks] = useState([])
+    const [userAuthenticated, setUserAuthenticated] = useState(false);
+    const [ userData, setUserData ] = useState(null)
+    const [ newBookmark, setNewBookmark ] = useState(0)
+    
+        useEffect(() => {
+              // fetch data from flask api endpoint
+              fetch('/api/shows')
+                .then((response) => response.json())
+                .then((data) => {
+                  // set the retrieved shows data in the state
+                  setShows(data.shows)
+                })
+                .catch((error) => {
+                  console.error('Error fetching data:', error)
+                })
+            },[newBookmark])
+
+            useEffect(() => {
+                // fetch data from flask api endpoint
+                fetch('/api/bookmarked')
+                  .then((response) => response.json())
+                  .then((data) => {
+                    console.log(`in bookmark fetch`,data)
+                    console.log(data.bookmarked)
+                    // set the retrieved shows data in the state
+                    setUserBookmarks(data.bookmarked)
+                  })
+                  .catch((error) => {
+                    console.error('Error fetching data:', error)
+                  })
+              },[newBookmark])
+
+              useEffect(() => {
+                fetch('/api/user')
+                    .then((response) => response.json())
+                    .then((data) => {
+                        console.log('from fetch user', data)
+                        if (data.user_id) {
+                            setUserAuthenticated(true);
+                            setUserData(data);
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('Error fetching user data:', error);
+                    });
+            }, [newBookmark]);
+
+
 
     const whatTitle = () => {
         if (home) {
@@ -119,7 +169,7 @@ const MainProvider = ({ children }) => {
     }
      
     return (
-        <MainContext.Provider value={{ home, movie, tv, bookmarked, setHome, whatTitle, hoverAction, outHover, search, searchTerm, handleChange, handlePageChange, signupPage, loginPage, loginPageClick, signUpPageClick, handleAvatarClick, successLogin }}>
+        <MainContext.Provider value={{ home, movie, tv, bookmarked, setHome, whatTitle, hoverAction, outHover, search, searchTerm, handleChange, handlePageChange, signupPage, loginPage, loginPageClick, signUpPageClick, handleAvatarClick, successLogin, shows, userBookmarks, userData, setNewBookmark, newBookmark }}>
             {children}
         </MainContext.Provider>
     )

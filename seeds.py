@@ -1,4 +1,4 @@
-from app.models import User, Show, Trend, Bookmark
+from app.models import User, Show, Trend, UserShowBookmark
 from app.db import Session, Base, engine
 
 # drop & rebuild tables
@@ -22,7 +22,7 @@ shows = [
     Show(title='Bottom Gear', category='Movie', rating='PG', year=2021, regular_small='./assets/thumbnails/bottom-gear/regular/small.jpg', regular_med='./assets/thumbnails/bottom-gear/regular/medium.jpg', regular_lg='./assets/thumbnails/bottom-gear/regular/large.jpg', trending=True),
     Show(title='Undiscovered Cities', category='TV Series', rating='E', year=2019, regular_small='./assets/thumbnails/undiscovered-cities/regular/small.jpg', regular_med='./assets/thumbnails/undiscovered-cities/regular/medium.jpg', regular_lg='./assets/thumbnails/undiscovered-cities/regular/large.jpg', trending=True),
     Show(title='1998', category='Movie', rating='18+', year=2021, regular_small='./assets/thumbnails/1998/regular/small.jpg', regular_med='./assets/thumbnails/1998/regular/medium.jpg', regular_lg='./assets/thumbnails/1998/regular/large.jpg', trending=True),
-    Show(title='Dark Side of the Moon', category='TV Series', rating='PG', year=2018, regular_small='./assets/thumbnails/dark-side-of-the-moon/regular/small.jpg', regular_med='./assets/thumbnails/dark-side-of-the-moon/regular/medium.jpg', regular_lg='./assets/thumbnails/dark-side-of-the-moon/regular/large.jpg', trending=False),
+    Show(title='Dark Side of the Moon', category='TV Series', rating='PG', year=2018, regular_small='./assets/thumbnails/dark-side-of-the-moon/regular/small.jpg', regular_med='./assets/thumbnails/dark-side-of-the-moon/regular/medium.jpg', regular_lg='./assets/thumbnails/dark-side-of-the-moon/regular/large.jpg', trending=True),
     Show(title='The Great Lands', category='Movie', rating='E', year=2019, regular_small='./assets/thumbnails/the-great-lands/regular/small.jpg', regular_med='./assets/thumbnails/the-great-lands/regular/medium.jpg', regular_lg='./assets/thumbnails/the-great-lands/regular/large.jpg', trending=False),
     Show(title='The Diary', category='TV Series', rating='PG', year=2019, regular_small='./assets/thumbnails/the-diary/regular/small.jpg', regular_med='./assets/thumbnails/the-diary/regular/medium.jpg', regular_lg='./assets/thumbnails/the-diary/regular/large.jpg', trending=False),
     Show(title='Earth’s Untouched', category='Movie', rating='18+', year=2017, regular_small='./assets/thumbnails/earths-untouched/regular/small.jpg', regular_med='./assets/thumbnails/earths-untouched/regular/medium.jpg', regular_lg='./assets/thumbnails/earths-untouched/regular/large.jpg', trending=False),
@@ -62,6 +62,25 @@ trending_shows = [
 ]
 
 db.add_all(trending_shows)
+db.commit()
+
+# insert bookmarks
+# retreive user and show instances
+user1 = db.query(User).filter_by(email='john@rughdesign.com').first()
+user2 = db.query(User).filter_by(email='laura@rughdesign.com').first()
+show1 = db.query(Show).filter_by(title='Beyond Earth').first()
+show2 = db.query(Show).filter_by(title='Bottom Gear').first()
+show3 = db.query(Show).filter_by(title='During the Hunt').first()
+
+
+# create bookmarks and associate them with users and shows
+bookmarks = [
+    UserShowBookmark(user_id=user1.id, show_id=show1.id),
+    UserShowBookmark(user_id=user2.id, show_id=show2.id),
+    UserShowBookmark(user_id=user1.id, show_id=show3.id)
+]
+
+db.add_all(bookmarks)
 db.commit()
 
 db.close()

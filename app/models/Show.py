@@ -1,6 +1,7 @@
 from app.db import Base
 from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Boolean
 from sqlalchemy.orm import relationship
+from sqlalchemy.ext.hybrid import hybrid_property
 
 class Show(Base):
     __tablename__ = 'shows'
@@ -16,3 +17,19 @@ class Show(Base):
 
     # define the relationship
     user_bookmarks = relationship('UserShowBookmark', back_populates='show')
+    trend = relationship('Trend', back_populates='show')
+
+    @hybrid_property
+    def trending_data(self):
+        if self.trend:
+            return [
+                {
+                    'id': trend.id,
+                    'showId': trend.show_id,
+                    'trendingSmall': trend.trending_small,
+                    'trendingLarge': trend.trending_large
+                }
+                for trend in self.trend
+            ]
+        else:
+            return None
