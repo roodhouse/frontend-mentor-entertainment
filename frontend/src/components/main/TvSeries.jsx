@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Card from '../shared/Card'
 import { useMain } from '../../context/mainContext'
 
@@ -7,14 +7,19 @@ function TvSeries() {
 
   const movieData = searchTerm ? shows.filter((item) => item.category === 'TV Series' && item.title.includes(searchTerm)) : shows.filter((item) => item.category === 'TV Series')
 
+  /// try code from chap gpt.... here
+
   useEffect(() => {
     isShowBookmarked()
-    console.log('new updattttteee from tv')   
-   },[newBookmark])
+    console.log('new updattttteee from tv')
+    console.log(userBookmarks)   
+   },[userBookmarks])
 
   const isShowBookmarked = (showId) => {
     return userBookmarks.some((bookmark) => bookmark.show_id === showId)
   }
+
+  console.log('from tv user bookmarks ', userBookmarks)
 
   return (
     <>

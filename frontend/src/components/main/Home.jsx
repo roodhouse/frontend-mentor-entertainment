@@ -20,7 +20,7 @@ function Home() {
   const isShowBookmarked = (showId) => {
     return userBookmarks.some((bookmark) => bookmark.show_id === showId)
   }
-
+  console.log('from home user bookmarks ', userBookmarks)
   return (
     <>
         <div id="homeContainer">
