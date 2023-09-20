@@ -39,8 +39,6 @@ const MainProvider = ({ children }) => {
                 fetch('/api/bookmarked')
                   .then((response) => response.json())
                   .then((data) => {
-                    console.log(`in bookmark fetch`,data)
-                    console.log(data.bookmarked)
                     // set the retrieved shows data in the state
                     setUserBookmarks(data.bookmarked)
                   })
@@ -53,7 +51,6 @@ const MainProvider = ({ children }) => {
                 fetch('/api/user')
                     .then((response) => response.json())
                     .then((data) => {
-                        console.log('from fetch user', data)
                         if (data.user_id) {
                             setUserAuthenticated(true);
                             setUserData(data);

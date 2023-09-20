@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import './App.css';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Main from './components/Main';
 import { useMain } from './context/mainContext';
         
-// 7. height issue on bookmark page only, when empty.... wait,, only empty because bookmarks are not hooked up...  
 // 8. logout 
 // 9. logic with avatar and how to login
 
@@ -21,7 +20,7 @@ function App() {
     const mainWrapper = document.getElementById('mainWrapper')
     console.log(appHeight, window.innerHeight)
 
-    if ( appHeight < window.innerHeight && searchTerm !== '' ) {
+    if ( (appHeight < window.innerHeight && searchTerm !== '') || (bookmarked)) {
       mainWrapper.classList.add('h-screen')
     } 
     
@@ -29,7 +28,7 @@ function App() {
         mainWrapper.classList.remove('h-screen')
     }
 
-  },[searchTerm])
+  },[searchTerm][bookmarked])
   
   
   
