@@ -1,12 +1,34 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useMain } from '../../context/mainContext'
 
 function BookmarkFlag({ item, background }) {
 
-  const [ isHovered, setIsHovered ] = useState(false)
-  const [ theFlag, setTheFlag ] = useState(background)
-
   const { shows, userData, userBookmarks, setNewBookmark, newBookmark } = useMain()
+  const [ isHovered, setIsHovered ] = useState(false)
+  const [ theFlag, setTheFlag ] = useState('../../assets/icon-bookmark-empty.svg')
+  const [ updateBookmark, setUpdateBookmark ] = useState(false)
+
+  useEffect(() => {
+    if(item && item.id) {
+      setTheFlag(
+        userBookmarks.some((bookmark) => bookmark.show_id === item.id)
+          ? '../../assets/icon-bookmark-full.svg'
+          : '../../assets/icon-bookmark-empty.svg'
+      )
+    }
+  },[item, userBookmarks])
+
+  useEffect(() => {
+      fetch('/api/bookmarked')
+        .then((response) => response.json())
+        .then((data) => {
+          setUpdateBookmark(false)
+        })
+        .catch((error) => {
+          console.error('Error fetching data:', error)
+        })
+  }, [updateBookmark])
+
   
   const handleMouseEnter = () => {
     setIsHovered(true)
@@ -44,9 +66,6 @@ function BookmarkFlag({ item, background }) {
         }
     } else {
       const deletedBookmark = userBookmarks.filter((item) => item.show_id === showId)
-      console.log(deletedBookmark)
-      console.log(deletedBookmark[0])
-      console.log(deletedBookmark[0].id)
       const id = deletedBookmark[0].id
       const response = await fetch(`/api/bookmarked/${id}`, {
         method: 'DELETE'
@@ -60,6 +79,7 @@ function BookmarkFlag({ item, background }) {
       
     }
     setNewBookmark(newBookmark+1)
+    setUpdateBookmark(true)
   }
 
   return (

@@ -1,22 +1,13 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Card from '../shared/Card'
 import { useMain } from '../../context/mainContext'
 
 function BookmarkedPage() {
 
-  const { searchTerm, userBookmarks, newBookmark } = useMain()
+  const { searchTerm, userBookmarks } = useMain()
   const movieData = searchTerm ? userBookmarks.filter((item) => item.show_info.category === 'Movie' && item.show_info.title.includes(searchTerm)) : userBookmarks.filter((item) => item.show_info.category === 'Movie' )
   const tvData = searchTerm ? userBookmarks.filter((item) => item.show_info.category === 'TV Series' && item.show_info.title.includes(searchTerm)) : userBookmarks.filter((item) => item.show_info.category === 'TV Series')
   
-  useEffect(() => {
-   isShowBookmarked()
-   console.log('new updattttteee')   
-  },[newBookmark])
-
-  const isShowBookmarked = (showId) => {
-    return userBookmarks.some((bookmark) => bookmark.show_id === showId)
-  }
-  console.log('from bookmakred page:', tvData)
   
   return (
     <>
@@ -32,11 +23,6 @@ function BookmarkedPage() {
                 <Card 
                     key={item.show_info.title} 
                     item={item.show_info} 
-                    background={
-                        isShowBookmarked(item.show_info.id)
-                          ? '../../assets/icon-bookmark-full.svg'
-                          : '../../assets/icon-bookmark-empty.svg'
-                      } 
                     />
             ))}
         </div>
@@ -52,11 +38,6 @@ function BookmarkedPage() {
                 <Card 
                     key={item.show_info.title} 
                     item={item.show_info} 
-                    background={
-                        isShowBookmarked(item.show_info.id)
-                          ? '../../assets/icon-bookmark-full.svg'
-                          : '../../assets/icon-bookmark-empty.svg'
-                      } 
                 />
             ))}
         </div>

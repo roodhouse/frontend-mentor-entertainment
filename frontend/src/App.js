@@ -4,16 +4,10 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Main from './components/Main';
 import { useMain } from './context/mainContext';
-
-// 6. set up back end
-      // hook up book mark data
-  // hook up bookmarks
-    // remove bookmarks
-    // update bookmark page to refresh when a new bookmark is added or removed
-      // bookmarks now update on bookmarks page upon click
-      // bookmarks do not update on other pages until refresh
         
 // 7. height issue on bookmark page only, when empty.... wait,, only empty because bookmarks are not hooked up...  
+// 8. logout 
+// 9. logic with avatar and how to login
 
 
 function App() {

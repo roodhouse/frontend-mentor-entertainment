@@ -1,11 +1,8 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import BookmarkFlag from '../../shared/BookmarkFlag'
 import MovieIcon from '../../../assets/icon-category-movie.svg'
 import TvIcon from '../../../assets/icon-category-tv.svg'
 import { useMain } from '../../../context/mainContext'
-
-
-
 
 function Trending() {
 
@@ -20,16 +17,7 @@ function Trending() {
         container.appendChild(firstContainer)
     }
 
-    const { shows, userBookmarks, newBookmark } = useMain()
-
-    useEffect(() => {
-        isShowBookmarked()
-        console.log('new updattttteee from trending')   
-       },[newBookmark])
-
-    const isShowBookmarked = (showId) => {
-        return userBookmarks.some((bookmark) => bookmark.show_id === showId)
-      }
+    const { shows } = useMain()
 
   return (
     <>
@@ -46,13 +34,7 @@ function Trending() {
                                 <div key={isAtrend.title} className='trendingItemsInnerContainer mr-4 cursor-pointer md:mr-10' onClick={handleSlide}>
                                     <div className='trending w-[240px] h-[140px] bg-cover rounded-[8px] md:w-[470px] md:h-[230px] bg-no-repeat' style={ window.innerWidth < 768 ? { backgroundImage: `url(${isAtrend.trending_data[0].trendingSmall})` } : { backgroundImage: `url(${isAtrend.trending_data[0].trendingLarge})` }}>
                                         <div id="bookmarkTrendingFlagWrapper" className='flex justify-end mb-[46px] md:mb-[106px]'>
-                                            <BookmarkFlag 
-                                                background={
-                                                    isShowBookmarked(isAtrend.id)
-                                                        ? '../../assets/icon-bookmark-full.svg'
-                                                        : '../../assets/icon-bookmark-empty.svg'
-                                                }    
-                                                />
+                                            <BookmarkFlag item={isAtrend} />
                                         </div>
                                         <div className='trendingDetailsContainer pl-4 flex items-center justify-between max-w-[155px] md:pl-6 md:max-w-[175px]'>
                                             <div className='trendingDetailsYear text-white opacity-75 text-xs leading-normal  md:text-[15px]'>
