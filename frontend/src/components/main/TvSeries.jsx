@@ -9,11 +9,11 @@ function TvSeries() {
 
   /// try code from chap gpt.... here
 
-  useEffect(() => {
-    isShowBookmarked()
-    console.log('new updattttteee from tv')
-    console.log(userBookmarks)   
-   },[userBookmarks])
+  // useEffect(() => {
+  //   isShowBookmarked()
+  //   console.log('new updattttteee from tv')
+  //   console.log(userBookmarks)   
+  //  },[userBookmarks])
 
   const isShowBookmarked = (showId) => {
     return userBookmarks.some((bookmark) => bookmark.show_id === showId)
