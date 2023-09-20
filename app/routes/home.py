@@ -120,6 +120,21 @@ def new_bookmark():
         print(sys.exc_info()[0])
         db.rollback()
         return jsonify(message = 'Bookmarked failed'), 500
+    
+@bp.route('/api/bookmarked/<id>', methods=['DELETE'])
+def delete_bookmark(id):
+    db = get_db()
+
+    try:
+        db.delete(db.query(UserShowBookmark).filter(UserShowBookmark.id == id).one())
+        db.commit()
+    except:
+        print(sys.exc_info()[0])
+        db.rollback()
+        return jsonify(message = 'Bookmark not found'), 404
+
+    return '', 204
+
 
 # user routes
 @bp.route('/users', methods=['POST'])

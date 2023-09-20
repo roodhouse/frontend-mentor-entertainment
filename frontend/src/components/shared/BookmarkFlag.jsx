@@ -6,7 +6,7 @@ function BookmarkFlag({ item, background }) {
   const [ isHovered, setIsHovered ] = useState(false)
   const [ theFlag, setTheFlag ] = useState(background)
 
-  const { shows, userData } = useMain()
+  const { shows, userData, userBookmarks } = useMain()
   
   const handleMouseEnter = () => {
     setIsHovered(true)
@@ -19,13 +19,12 @@ function BookmarkFlag({ item, background }) {
   const theBackground = isHovered ? '../../assets/icon-bookmark-hover.svg' : theFlag
   
   const handleClick = async (data) => {
+    const title = data.target.parentElement.nextSibling.nextSibling.firstChild.innerHTML
+    const showId = shows.filter((item) => item.title === title)[0].id
     // write to database or remove from database...
     if ( theFlag === '../../assets/icon-bookmark-empty.svg' ) {
         setTheFlag('../../assets/icon-bookmark-full.svg')
-        const title = data.target.parentElement.nextSibling.nextSibling.firstChild.innerHTML
-        const showId = shows.filter((item) => item.title === title)[0].id
         const userId = userData.user_id
-        console.log(showId, userId)
         if (showId && userId) {
           const response = await fetch('/api/bookmarked', {
             method: 'post',
@@ -38,12 +37,26 @@ function BookmarkFlag({ item, background }) {
           if(response.ok) {
             console.log('bookmark added')
           } else {
-            console.log(response.statusText) // here !!!
+            console.log(response.statusText)
             alert(response.statusText + ' bookmark failed to add')
           }
         }
     } else {
-      setTheFlag('../../assets/icon-bookmark-empty.svg')
+      const deletedBookmark = userBookmarks.filter((item) => item.show_id === showId)
+      console.log(deletedBookmark)
+      console.log(deletedBookmark[0])
+      console.log(deletedBookmark[0].id)
+      const id = deletedBookmark[0].id
+      const response = await fetch(`/api/bookmarked/${id}`, {
+        method: 'DELETE'
+      })
+      if (response.ok) {
+        console.log('bookmark deleted')
+        setTheFlag('../../assets/icon-bookmark-empty.svg')
+      } else {
+        alert(response.statusText)
+      }
+      
     }
     
   }

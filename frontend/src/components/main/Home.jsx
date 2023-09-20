@@ -4,18 +4,17 @@ import BookmarkFlag from '../shared/BookmarkFlag'
 import MovieIcon from '../../assets/icon-category-movie.svg'
 import TvIcon from '../../assets/icon-category-tv.svg'
 import { useMain } from '../../context/mainContext'
-import Data from '../../data.json'
 import Card from '../shared/Card'
 
 function Home() {
 
-  const { whatTitle, hoverAction, outHover, searchTerm, shows } = useMain()
+  const { hoverAction, outHover, searchTerm, shows, userBookmarks } = useMain()
 
   const allData = shows.filter((item) => item.title.includes(searchTerm))
-  const newAllData = shows.filter((item) => item.title.includes(searchTerm))
-  // need to find where I need to fix data with different terms...
-  
-  console.log(shows)
+
+  const isShowBookmarked = (showId) => {
+    return userBookmarks.some((bookmark) => bookmark.show_id === showId)
+  }
 
   return (
     <>
@@ -29,12 +28,20 @@ function Home() {
             </div>
             
             <div id="recommendedWrapper" className='grid grid-cols-12 gap-[15px]  px-4 md:pl-0 md:pr-6 xl:pr-9'>
-            {/* <div id="recommendedWrapper" className='flex flex-wrap px-4 justify-between md:pl-0 md:pr-6 xl:pr-9'> */}
            {
             
             searchTerm !== '' ? (
               allData.map((item) => (
-                <Card key={item.title} item={item} background={item.isBookmarked ? '../../assets/icon-bookmark-full.svg' : '../../assets/icon-bookmark-empty.svg'} />
+                <Card 
+                  key={item.title} 
+                  item={item} 
+                  background={
+                    isShowBookmarked(item.id)
+                      ? '../../assets/icon-bookmark-full.svg'
+                      : '../../assets/icon-bookmark-empty.svg'
+                  } 
+                  
+                />
               ))
             ) :
              shows.map((item) => {
@@ -43,7 +50,14 @@ function Home() {
                          <div key={item.title} className='recommendedItemContainer mb-4 md:mb-6 col-span-6 min-[530px]:col-span-4 lg:col-span-3 min-w-[164px]'>
                             <div onMouseEnter={hoverAction} onMouseLeave={outHover} className='recommendedItemBackground w-[164px] h-[110px] flex flex-col justify-start rounded-[8px] mb-2 md:w-[220px] md:h-[140px] xl:w-[280px] xl:h-[174px] 2xl:w-[375px] 2xl:h-[233px] bg-cover bg-no-repeat'
                                  style={ window.innerWidth < 768 ? { backgroundImage: `url(${item.regular_small})` } : window.innerWidth < 1280 ? { backgroundImage: `url(${item.regular_med})` } : { backgroundImage: `url(${item.regular_lg})` }}>
-                                    <BookmarkFlag background={item.isBookmarked ? '../../assets/icon-bookmark-full.svg' : '../../assets/icon-bookmark-empty.svg'} />
+                                    <BookmarkFlag 
+                                      background={
+                                        isShowBookmarked(item.id)
+                                          ? '../../assets/icon-bookmark-full.svg'
+                                          : '../../assets/icon-bookmark-empty.svg'
+                                      } 
+                                      
+                                      />
                             </div>
                             <div className='recommendedDetailsContainer flex items-center justify-start max-w-[155px] md:max-w-[175px]'>
                                 <div className='recommendedDetailsYear text-white opacity-75 text-[11px] leading-normal mr-[6px]  md:text-[13px]'>
