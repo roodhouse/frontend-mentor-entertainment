@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Trending from './home/Trending'
 import BookmarkFlag from '../shared/BookmarkFlag'
 import MovieIcon from '../../assets/icon-category-movie.svg'
@@ -8,9 +8,14 @@ import Card from '../shared/Card'
 
 function Home() {
 
-  const { hoverAction, outHover, searchTerm, shows, userBookmarks } = useMain()
+  const { hoverAction, outHover, searchTerm, shows, userBookmarks, newBookmark } = useMain()
 
   const allData = shows.filter((item) => item.title.includes(searchTerm))
+
+  useEffect(() => {
+    isShowBookmarked()
+    console.log('new updattttteee from home')   
+   },[newBookmark])
 
   const isShowBookmarked = (showId) => {
     return userBookmarks.some((bookmark) => bookmark.show_id === showId)

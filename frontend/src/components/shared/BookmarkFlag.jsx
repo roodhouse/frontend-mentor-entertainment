@@ -6,7 +6,7 @@ function BookmarkFlag({ item, background }) {
   const [ isHovered, setIsHovered ] = useState(false)
   const [ theFlag, setTheFlag ] = useState(background)
 
-  const { shows, userData, userBookmarks } = useMain()
+  const { shows, userData, userBookmarks, setNewBookmark, newBookmark } = useMain()
   
   const handleMouseEnter = () => {
     setIsHovered(true)
@@ -19,6 +19,7 @@ function BookmarkFlag({ item, background }) {
   const theBackground = isHovered ? '../../assets/icon-bookmark-hover.svg' : theFlag
   
   const handleClick = async (data) => {
+    
     const title = data.target.parentElement.nextSibling.nextSibling.firstChild.innerHTML
     const showId = shows.filter((item) => item.title === title)[0].id
     // write to database or remove from database...
@@ -58,7 +59,7 @@ function BookmarkFlag({ item, background }) {
       }
       
     }
-    
+    setNewBookmark(newBookmark+1)
   }
 
   return (

@@ -1,13 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Card from '../shared/Card'
 import { useMain } from '../../context/mainContext'
 
 function BookmarkedPage() {
 
-  const { searchTerm, userBookmarks } = useMain()
+  const { searchTerm, userBookmarks, newBookmark } = useMain()
   const movieData = searchTerm ? userBookmarks.filter((item) => item.show_info.category === 'Movie' && item.show_info.title.includes(searchTerm)) : userBookmarks.filter((item) => item.show_info.category === 'Movie' )
   const tvData = searchTerm ? userBookmarks.filter((item) => item.show_info.category === 'TV Series' && item.show_info.title.includes(searchTerm)) : userBookmarks.filter((item) => item.show_info.category === 'TV Series')
   
+  useEffect(() => {
+   isShowBookmarked()
+   console.log('new updattttteee')   
+  },[newBookmark])
+
+  const isShowBookmarked = (showId) => {
+    return userBookmarks.some((bookmark) => bookmark.show_id === showId)
+  }
+  console.log('from bookmakred page:', tvData)
   
   return (
     <>
@@ -20,7 +29,15 @@ function BookmarkedPage() {
         <div id="bookmarkPageMovieContainer" className='grid grid-cols-12 gap-[15px] px-4 md:pl-0 md:pr-6 xl:pr-9'>
             {movieData.map((item) => (
                 
-                <Card key={item.show_info.title} item={item.show_info} background={item.isBookmarked ? '../../assets/icon-bookmark-full.svg' : '../../assets/icon-bookmark-empty.svg'} />
+                <Card 
+                    key={item.show_info.title} 
+                    item={item.show_info} 
+                    background={
+                        isShowBookmarked(item.show_info.id)
+                          ? '../../assets/icon-bookmark-full.svg'
+                          : '../../assets/icon-bookmark-empty.svg'
+                      } 
+                    />
             ))}
         </div>
 
@@ -32,7 +49,15 @@ function BookmarkedPage() {
         <div id="bookmarkPageTvContainer" className='grid grid-cols-12 gap-[15px] px-4 md:pl-0 md:pr-6 xl:pr-9'>
             {tvData.map((item) => (
                 
-                <Card key={item.show_info.title} item={item.show_info} background={'../../assets/icon-bookmark-empty.svg'} />
+                <Card 
+                    key={item.show_info.title} 
+                    item={item.show_info} 
+                    background={
+                        isShowBookmarked(item.show_info.id)
+                          ? '../../assets/icon-bookmark-full.svg'
+                          : '../../assets/icon-bookmark-empty.svg'
+                      } 
+                />
             ))}
         </div>
 </>

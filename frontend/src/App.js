@@ -10,11 +10,9 @@ import { useMain } from './context/mainContext';
   // hook up bookmarks
     // remove bookmarks
     // update bookmark page to refresh when a new bookmark is added or removed
-    // removed:
-        // add delete route
-        // connect delete route to the onClick function
-          // replicate functionality from home page on the other 3 screens
-    // bookmarks on bookmark page do not have the correct symbol
+      // bookmarks now update on bookmarks page upon click
+      // bookmarks do not update on other pages until refresh
+        
 // 7. height issue on bookmark page only, when empty.... wait,, only empty because bookmarks are not hooked up...  
 
 
