@@ -115,6 +115,7 @@ def new_bookmark():
 
         db.add(newBookmark)
         db.commit()
+        return jsonify(message = 'Bookmark added'), 200
     except:
         print(sys.exc_info()[0])
         db.rollback()
