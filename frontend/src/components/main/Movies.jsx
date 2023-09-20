@@ -1,21 +1,12 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Card from '../shared/Card'
 import { useMain } from '../../context/mainContext'
 
 function Movies() {
 
-  const { searchTerm, shows, userBookmarks, newBookmark } = useMain()
+  const { searchTerm, shows } = useMain()
 
   const movieData = searchTerm ? shows.filter((item) => item.category === 'Movie' && item.title.includes(searchTerm)) : shows.filter((item) => item.category === 'Movie')
-
-  useEffect(() => {
-    isShowBookmarked()
-    console.log('new updattttteee from movie')   
-   },[newBookmark])
-
-  const isShowBookmarked = (showId) => {
-    return userBookmarks.some((bookmark) => bookmark.show_id === showId)
-  }
 
   return (
     <>
@@ -24,12 +15,7 @@ function Movies() {
             <Card 
               key={item.title} 
               item={item} 
-              background={
-                isShowBookmarked(item.id)
-                ? '../../assets/icon-bookmark-full.svg'
-                : '../../assets/icon-bookmark-empty.svg'
-              } 
-              />
+          />
         ))}
     </div>
 </>
