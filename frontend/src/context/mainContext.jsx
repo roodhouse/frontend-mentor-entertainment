@@ -171,12 +171,28 @@ const MainProvider = ({ children }) => {
     }
 
     const handleAvatarClick = (e) => {
-        setHome(false)
-        setMovie(false)
-        setTv(false)
-        setBookmarked(false)
-        setSignupPage(false)
-        setLoginPage(true)
+        if (userData.email){
+            let logout = async (e) => {
+                const response = await fetch('/users/logout', {
+                    method: 'post',
+                    headers: { 'Content-Type': 'application/json' }
+                })
+                if (response.ok) {
+                    setUserAuthenticated(false)
+                  } else {
+                    alert(response.statusText);
+                  }
+
+            }
+            logout()
+        } else {
+            setHome(false)
+            setMovie(false)
+            setTv(false)
+            setBookmarked(false)
+            setSignupPage(false)
+            setLoginPage(true)
+        }
     }
      
     return (
