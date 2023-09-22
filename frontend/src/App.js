@@ -5,8 +5,7 @@ import SignUp from './components/SignUp';
 import Main from './components/Main';
 import { useMain } from './context/mainContext';
         
-// 8. logout 
-// 9. logic with avatar and how to login
+// 8. logout
 
 
 function App() {

@@ -3,7 +3,7 @@ import { useMain } from '../../context/mainContext'
 
 function BookmarkFlag({ item, background }) {
 
-  const { shows, userData, userBookmarks, setNewBookmark, newBookmark } = useMain()
+  const { shows, userData, userBookmarks, setNewBookmark, newBookmark, userAuthenticated } = useMain()
   const [ isHovered, setIsHovered ] = useState(false)
   const [ theFlag, setTheFlag ] = useState('../../assets/icon-bookmark-empty.svg')
   const [ updateBookmark, setUpdateBookmark ] = useState(false)
@@ -41,45 +41,48 @@ function BookmarkFlag({ item, background }) {
   const theBackground = isHovered ? '../../assets/icon-bookmark-hover.svg' : theFlag
   
   const handleClick = async (data) => {
-    
-    const title = data.target.parentElement.nextSibling.nextSibling.firstChild.innerHTML
-    const showId = shows.filter((item) => item.title === title)[0].id
-    // write to database or remove from database...
-    if ( theFlag === '../../assets/icon-bookmark-empty.svg' ) {
-        setTheFlag('../../assets/icon-bookmark-full.svg')
-        const userId = userData.user_id
-        if (showId && userId) {
-          const response = await fetch('/api/bookmarked', {
-            method: 'post',
-            body: JSON.stringify({
-              userId,
-              showId
-            }),
-            headers: {'Content-Type': 'application/json'}
-          })
-          if(response.ok) {
-            console.log('bookmark added')
-          } else {
-            console.log(response.statusText)
-            alert(response.statusText + ' bookmark failed to add')
+    if(userAuthenticated){
+      const title = data.target.parentElement.nextSibling.nextSibling.firstChild.innerHTML
+      const showId = shows.filter((item) => item.title === title)[0].id
+      // write to database or remove from database...
+      if ( theFlag === '../../assets/icon-bookmark-empty.svg' ) {
+          setTheFlag('../../assets/icon-bookmark-full.svg')
+          const userId = userData.user_id
+          if (showId && userId) {
+            const response = await fetch('/api/bookmarked', {
+              method: 'post',
+              body: JSON.stringify({
+                userId,
+                showId
+              }),
+              headers: {'Content-Type': 'application/json'}
+            })
+            if(response.ok) {
+              console.log('bookmark added')
+            } else {
+              console.log(response.statusText)
+              alert(response.statusText + ' bookmark failed to add')
+            }
           }
-        }
-    } else {
-      const deletedBookmark = userBookmarks.filter((item) => item.show_id === showId)
-      const id = deletedBookmark[0].id
-      const response = await fetch(`/api/bookmarked/${id}`, {
-        method: 'DELETE'
-      })
-      if (response.ok) {
-        console.log('bookmark deleted')
-        setTheFlag('../../assets/icon-bookmark-empty.svg')
       } else {
-        alert(response.statusText)
+        const deletedBookmark = userBookmarks.filter((item) => item.show_id === showId)
+        const id = deletedBookmark[0].id
+        const response = await fetch(`/api/bookmarked/${id}`, {
+          method: 'DELETE'
+        })
+        if (response.ok) {
+          console.log('bookmark deleted')
+          setTheFlag('../../assets/icon-bookmark-empty.svg')
+        } else {
+          alert(response.statusText)
+        }
+        
       }
-      
+      setNewBookmark(newBookmark+1)
+      setUpdateBookmark(true)
+    } else {
+      return
     }
-    setNewBookmark(newBookmark+1)
-    setUpdateBookmark(true)
   }
 
   return (
