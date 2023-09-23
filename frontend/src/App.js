@@ -4,9 +4,6 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Main from './components/Main';
 import { useMain } from './context/mainContext';
-        
-// 8. logout
-
 
 function App() {
 
@@ -17,7 +14,6 @@ function App() {
     const app = document.getElementById('app')
     const appHeight = app.offsetHeight
     const mainWrapper = document.getElementById('mainWrapper')
-    console.log(appHeight, window.innerHeight)
 
     if ( (appHeight < window.innerHeight && searchTerm !== '') || (bookmarked)) {
       mainWrapper.classList.add('h-screen')

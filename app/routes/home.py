@@ -36,6 +36,18 @@ def serve_manifest():
         mainifest_data = json.load(f)
     return jsonify(mainifest_data)
 
+@bp.route('/favicon.ico')
+def serve_favicon():
+    return send_from_directory('../frontend/build', 'favicon.ico')
+
+@bp.route('/logo192.png')
+def serve_logo192():
+    return send_from_directory('../frontend/build', 'logo192.png')
+
+@bp.route('/logo512.png')
+def serve_logo512():
+    return send_from_directory('../frontend/build', 'logo512.png')
+
 @bp.route('/api/shows')
 def get_shows_and_trending():
     # query the database to get shows data
