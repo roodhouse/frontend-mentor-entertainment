@@ -1,5 +1,6 @@
 {
   "name": "frontend-mentor-entertainment",
+  "homepage": "https://roodhouse.github.io/frontend-mentor-entertainment/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -37,6 +38,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^6.0.0",
     "tailwindcss": "^3.3.3"
   }
 }
