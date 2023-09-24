@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/frontend-mentor-entertainment/static/css/main.2c2c35c5.css",
+    "main.js": "/frontend-mentor-entertainment/static/js/main.8dc01da5.js",
+    "static/media/play.svg": "/frontend-mentor-entertainment/static/media/play.bc36ece5455baed0ce88.svg",
+    "index.html": "/frontend-mentor-entertainment/index.html",
+    "static/media/icon-category-movie.svg": "/frontend-mentor-entertainment/static/media/icon-category-movie.6861d0ce9036ac864b87dc5aff6570c3.svg",
+    "static/media/icon-nav-bookmark.svg": "/frontend-mentor-entertainment/static/media/icon-nav-bookmark.a564501ebcbde752ebe044260a9206b8.svg",
+    "static/media/icon-nav-bookmark-selected.svg": "/frontend-mentor-entertainment/static/media/icon-nav-bookmark-selected.0a371240fccbbd8769c74613e8c91c6e.svg",
+    "static/media/icon-nav-movies.svg": "/frontend-mentor-entertainment/static/media/icon-nav-movies.c347442f9a6fd2201f1abf8819aa4ef6.svg",
+    "static/media/icon-nav-movies-selected.svg": "/frontend-mentor-entertainment/static/media/icon-nav-movies-selected.8e060f139d5fbde61c5798cd57e878c9.svg",
+    "static/media/icon-nav-home.svg": "/frontend-mentor-entertainment/static/media/icon-nav-home.8acf660248afc7a27879c9c9bf218722.svg",
+    "static/media/icon-nav-home-selected.svg": "/frontend-mentor-entertainment/static/media/icon-nav-home-selected.d6b45d8dce3178a094530cd8a834ecf8.svg",
+    "static/media/icon-search.svg": "/frontend-mentor-entertainment/static/media/icon-search.cbc8d670ebd27b023c9868d5850d79c5.svg",
+    "static/media/logo.svg": "/frontend-mentor-entertainment/static/media/logo.7d4aedc9f44f15655a966567c57a1f37.svg",
+    "static/media/icon-category-tv.svg": "/frontend-mentor-entertainment/static/media/icon-category-tv.75c9208553d35303e2f1b61b511ab387.svg",
+    "static/media/icon-nav-tv-series.svg": "/frontend-mentor-entertainment/static/media/icon-nav-tv-series.c22fe1629b446365f6f7829a014453f8.svg",
+    "static/media/icon-nav-tv-series-selected.svg": "/frontend-mentor-entertainment/static/media/icon-nav-tv-series-selected.93d99a51c06b9d24b9e380fe26ddf6b0.svg",
+    "main.2c2c35c5.css.map": "/frontend-mentor-entertainment/static/css/main.2c2c35c5.css.map",
+    "main.8dc01da5.js.map": "/frontend-mentor-entertainment/static/js/main.8dc01da5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2c2c35c5.css",
+    "static/js/main.8dc01da5.js"
+  ]
+}
